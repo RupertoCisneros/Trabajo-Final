@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="PU_REMETFU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>gob.mdmq.remetfu.entidades.RemCatalogo</class>
+    <class>gob.mdmq.remetfu.entidades.RemTipoCatalogo</class>
+    <class>gob.mdmq.remetfu.entidades.RemUsuarios</class>
+    <class>gob.mdmq.remetfu.entidades.RemUsuarioPerfil</class>
+    <class>gob.mdmq.remetfu.entidades.RemPerfilTransaccion</class>
+    <class>gob.mdmq.remetfu.entidades.RemControlAcceso</class>
+    <class>gob.mdmq.remetfu.entidades.RemTransaccion</class>
+    <class>gob.mdmq.remetfu.entidades.RemModulo</class>
+    <class>gob.mdmq.remetfu.entidades.RemPerfil</class>
+    <class>gob.mdmq.remetfu.entidades.RemTutorMascota</class>
+    <class>gob.mdmq.remetfu.entidades.RemRegistroProfesional</class>
+    <class>gob.mdmq.remetfu.Entidades.RemCatalogo</class>
+    <class>gob.mdmq.remetfu.Entidades.RemTipoCatalogo</class>
+    <class>gob.mdmq.remetfu.Entidades.RemPerfil</class>
+    <class>gob.mdmq.remetfu.Entidades.RemRegistroProfesional</class>
+    <class>gob.mdmq.remetfu.Entidades.RemUsuarios</class>
+    <class>gob.mdmq.remetfu.Entidades.RemUsuarioPerfil</class>
+    <class>gob.mdmq.remetfu.Entidades.RemTipoRegistro</class>
+    <class>gob.mdmq.remetfu.Entidades.RemMenuPerfil</class>
+    <class>gob.mdmq.remetfu.Entidades.RemMenu</class>
+    <class>gob.mdmq.remetfu.Entidades.RemMenuCabecera</class>
+    <class>gob.mdmq.remetfu.Entidades.RemSubtipoRegistro</class>
+    <class>gob.mdmq.remetfu.Entidades.RemSecuencial</class>
+    <class>gob.mdmq.remetfu.Entidades.RemPerfilAcademico</class>
+    <class>gob.mdmq.remetfu.Entidades.RemTituloProfesional</class>
+    <class>gob.mdmq.remetfu.Entidades.RemRemetfu</class>
+    <class>gob.mdmq.remetfu.Entidades.RemParametros</class>
+    <class>gob.mdmq.remetfu.Entidades.RemNomenclatura</class>
+    <class>gob.mdmq.remetfu.Entidades.RemTramiteReasignacion</class>
+    <class>gob.mdmq.remetfu.Entidades.RemArchivos</class>
+    <class>gob.mdmq.remetfu.Entidades.RemAnimalTutor</class>
+    <class>gob.mdmq.remetfu.Entidades.RemComiteEticaCab</class>
+    <class>gob.mdmq.remetfu.Entidades.RemTipoAnimalTutor</class>
+    <class>gob.mdmq.remetfu.Entidades.RemTutoresComunitarios</class>
+    <class>gob.mdmq.remetfu.Entidades.RemRubrosSao</class>
+    <class>gob.mdmq.remetfu.Entidades.RemMicrochipMascotaUba</class>
+    <shared-cache-mode>ALL</shared-cache-mode>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=MDMQ_REMETFU"/>
+      <property name="javax.persistence.jdbc.user" value="sa"/>
+      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+      <property name="javax.persistence.jdbc.password" value="Moniruper1974"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create-tables"/>
+    </properties>
+  </persistence-unit>
+</persistence>

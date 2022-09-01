@@ -1,0 +1,28 @@
+<div class="mat-elevation-z8 p-3">
+  <h6 class="text-dark">Datos Personales</h6>
+  <hr>
+  <div class="row">
+    <div class="col-6">
+      <mat-form-field class="example-full-width" appearance="legacy">
+        <mat-label>Identificación</mat-label>
+        <input matInput [value]="persona.nroIdentificacion || ' '" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="example-full-width" appearance="legacy">
+        <mat-label>Nombres y Apellidos</mat-label>
+        <input matInput [value]="persona.denominacion|| ' '" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <div class="row">
+        <div class="col-10">
+          <mat-form-field class="example-full-width" appearance="legacy">
+            <mat-label>Correo electrónico</mat-label>
+            <input matInput [value]="persona.mailPersonal || ' '" disabled>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Acuerdo de responsabilidad</h1>
+<div class="text-justify">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Acuerdo</mat-label>
+    <textarea matInput disabled cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="8">
+      {{data.acuerdo}}
+        </textarea>
+  </mat-form-field>
+  <div class="text-center">
+    <mat-checkbox class="example-margin m-2" (change)="OnChange($event)" color="primary"><strong>Aceptar acuerdo</strong></mat-checkbox>
+  </div>
+  <hr>
+  <p> {{data.informeValorOrdenanza}} </p>
+</div>
+<div mat-dialog-actions align="center">
+  <button mat-raised-button color="warn" [mat-dialog-close]>Cancelar</button>
+  <button mat-raised-button class="botones" [disabled]="!IsChecked" [mat-dialog-close]="true">Continuar</button>
+</div>

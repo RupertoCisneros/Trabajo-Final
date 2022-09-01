@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+  <app-nacionalidad-form formControlName="nacionalidad"></app-nacionalidad-form>
+  <app-fecha-nacimiento-form formControlName="nacimiento"></app-fecha-nacimiento-form>
+  <app-direccion-form [editDireccion]="data.registroProfesional" formControlName="direccion"></app-direccion-form>
+  <app-telefono-form formControlName="telefono"></app-telefono-form>
+  <p class="text-primary font-weight-bold">Perfil Académico</p>
+  <app-select-simple-form  [editPerfil]="data.registroProfesional" [datos]="{titulo: 'Perfil Académico'}" [tipoCatalogo]="8" formControlName="perfiles">
+  </app-select-simple-form>
+  <div class="m-2 form-group">
+    <p class="text-primary font-weight-bold">Documento que acrediten su formación (*.pdf)</p>
+    <app-multiplos-archivos-form formControlName="formacion" [formatos]="formatos" [size]="500000" [max]="1" (envioArray)="recibirDocumento($event)"></app-multiplos-archivos-form>
+  </div>
+  <div class="text-center">
+    <button mat-raised-button class="m-2 botones" matStepperPrevious>Regresar</button>
+    <button mat-raised-button class="botones" matStepperNext [disabled]="!form.valid">Siguiente</button>
+  </div>
+</form>

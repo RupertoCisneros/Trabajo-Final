@@ -1,0 +1,23 @@
+<div class="m-2" [formGroup]="form">
+  <p class="text-primary font-weight-bold">Fecha de Nacimiento</p>
+  <div class="row">
+    <div class="col-6">
+      <mat-form-field class="example-full-width" color="primary" appearance="legacy">
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input matInput readonly [matDatepicker]="picker2" formControlName="nacimiento" [ngModel]="persona.fechaNacimiento" >
+        <mat-datepicker-toggle matSuffix disabled [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2 color="primary"></mat-datepicker>
+        <mat-error *ngIf="f['nacimiento'].touched && f['nacimiento'].invalid">
+          <mat-error *ngIf="f['nacimiento'].errors?.['required']">El campo fecha de nacimiento es requerido</mat-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-label class="m-3">Discapacidad</mat-label>
+      <mat-radio-group formControlName="discapacidad"  [ngModel]="persona.discapacidad" [disabled]="true" aria-label="Selecciona una Opción">
+        <mat-radio-button value="SI">Si</mat-radio-button>
+        <mat-radio-button value="NO">No</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+</div>

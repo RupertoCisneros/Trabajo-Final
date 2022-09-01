@@ -1,0 +1,64 @@
+<div class="m-2" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-6">
+      <mat-form-field class="example-full-width" appearance="legacy">
+        <mat-label>Parroquias</mat-label>
+        <mat-select *ngIf="parroquias" [formControl]="parroquiasCtrl" #selectParroquia>
+          <mat-option>
+            <ngx-mat-select-search [formControl]="parroquiasFilterCtrl" [placeholderLabel]="'Buscar...'"
+              [noEntriesFoundLabel]="'No Encontrado'"></ngx-mat-select-search>
+          </mat-option>
+          <mat-option *ngFor="let parroquia of filteredParroquias | async" [value]="parroquia.tipoCatalogoId">
+            {{parroquia.nombre}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="parroquiasCtrl.hasError('required')">El campo debe ser completado</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-12  col-md-6 col-lg-6">
+      <mat-form-field class="example-full-width" appearance="legacy">
+        <mat-label>Barrio</mat-label>
+        <input type="text" matInput formControlName="barrio">
+        <mat-error *ngIf="f['barrio'].touched && f['barrio'].invalid">
+          <mat-error *ngIf="f['barrio'].errors?.['required']">El campo Barrio es requerido</mat-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6">
+      <mat-form-field class="example-full-width" appearance="legacy">
+        <mat-label>Calle Principal</mat-label>
+        <input type="text" matInput formControlName="principal" [ngModel]="persona.direccion">
+        <mat-error *ngIf="f['principal'].touched && f['principal'].invalid">
+          <mat-error *ngIf="f['principal'].errors?.['required']">El campo Calle principal es requerido</mat-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6">
+      <mat-form-field class="example-full-width" appearance="legacy">
+        <mat-label>Calle Secundaria</mat-label>
+        <input type="text" matInput formControlName="secundaria">
+        <mat-error *ngIf="f['secundaria'].touched && f['secundaria'].invalid">
+          <mat-error *ngIf="f['secundaria'].errors?.['required']">El Calle Secundaria es requerido</mat-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6">
+      <mat-form-field class="example-full-width" appearance="legacy">
+        <mat-label>Nomenclatura</mat-label>
+        <input type="text" matInput formControlName="nomenclatura">
+      </mat-form-field>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6">
+      <mat-form-field class="example-full-width" appearance="legacy">
+        <mat-label>Otras (manzana, nro bloque, etc.)</mat-label>
+        <input type="text" matInput formControlName="otros">
+      </mat-form-field>
+    </div>
+    <div class="col-sm-12 col-12">
+      <mat-form-field class="example-full-width" appearance="legacy">
+        <mat-label>Referencia Domiciliaria</mat-label>
+        <input type="text" matInput formControlName="referencia">
+      </mat-form-field>
+    </div>
+  </div>
+</div>

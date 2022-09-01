@@ -1,0 +1,170 @@
+<button mat-raised-button *ngIf="registro" class="botones" mat-dialog-close>
+    <mat-icon>keyboard_backspace</mat-icon>Regresar
+</button>
+<div *ngIf="loading || !registro" class="text-center">
+    <mat-spinner style="margin: auto;" [diameter]="20"></mat-spinner>
+    <p>Cargando información...</p>
+</div>
+<div class="p-5 mat-elevation-z8 bg-secondary" *ngIf="registro">
+    <div class="container">
+        <mat-card>
+            <mat-card-title>{{registro.denominacion}}</mat-card-title>
+            <mat-card-subtitle>
+                <div class="d-flex justify-content-between bd-highlight mb-3">
+                    <div class="p-2 bd-highlight">Nro. Registro: {{registro.nroRegistroProfesional}} <br> </div>
+                    <div class="p-2 bd-highlight">{{registro.registro}}</div>
+                    <div class="p-2 bd-highlight">Fecha de Emisión: {{registro.fechaAsigna | date: 'longDate'}}</div>
+                </div>
+            </mat-card-subtitle>
+            <mat-card-content class="p-3">
+                <div class="row">
+                    <p style="font-size: 15px" class="text-primary">Datos del Registro</p>
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12  table-responsive" style="font-size: 16px">
+                        <table class="mat-elevation-z4 table">
+                            <tbody>
+                                <tr *ngIf="registro.nombres">
+                                    <td> Nombres </td>
+                                    <td>{{registro.nombres}}</td>
+                                </tr>
+                                <tr *ngIf="registro.apellidos">
+                                    <td> Apellidos</td>
+                                    <td>{{registro.apellidos}}</td>
+                                </tr>
+                                <tr *ngIf="registro.nroIdentificacion">
+                                    <td> Número de cédula de identidad</td>
+                                    <td>{{registro.nroIdentificacion}}</td>
+                                </tr>
+                                <tr *ngIf="registro.nacionalidad">
+                                    <td> Nacionalidad</td>
+                                    <td>{{registro.nacionalidad}}</td>
+                                </tr>
+                                <tr *ngIf="registro.discapacidad">
+                                    <td> Discapacidad </td>
+                                    <td>{{registro.discapacidad}}</td>
+                                </tr>
+                                <tr *ngIf="registro.movil">
+                                    <td> Número de contacto celular </td>
+                                    <td>{{registro.movil}}</td>
+                                </tr>
+                                <tr *ngIf="registro.telefono">
+                                    <td> Número de contacto convencional</td>
+                                    <td>{{registro.telefono}}</td>
+                                </tr>
+                                <tr *ngIf="registro.mail">
+                                    <td> Correo Electrónico </td>
+                                    <td>{{registro.mail}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 table-responsive" style="font-size: 16px">
+                        <table class="mat-elevation-z4 table">
+                            <tbody>
+                                <tr *ngIf="registro.direccion">
+                                    <td> Dirección Domiciliaria </td>
+                                    <td>{{registro.direccion}}</td>
+                                </tr>
+                                <tr *ngIf="registro.parroquia">
+                                    <td> Parroquia </td>
+                                    <td>{{registro.parroquia}}</td>
+                                </tr>
+                                <tr *ngIf="registro.barrio">
+                                    <td> Barrio</td>
+                                    <td>{{registro.barrio}}</td>
+                                </tr>
+                                <tr *ngIf="registro.calleNumero!='null'">
+                                    <td> Número de calle</td>
+                                    <td>{{registro.calleNumero}}</td>
+                                </tr>
+                                <tr *ngIf="registro.callePrincipal">
+                                    <td> Calle Principal</td>
+                                    <td>{{registro.callePrincipal}}</td>
+                                </tr>
+                                <tr *ngIf="registro.calleSecundaria">
+                                    <td> Calle Secundaria </td>
+                                    <td>{{registro.calleSecundaria}}</td>
+                                </tr>
+                                <tr *ngIf="registro.calleReferencia1!='null' && registro.calleReferencia1 != ''">
+                                    <td> Calle Referencia 1</td>
+                                    <td>{{registro.calleReferencia1}}</td>
+                                </tr>
+                                <tr *ngIf="registro.calleReferencia2!='null' && registro.calleReferencia2 != ''">
+                                    <td> Calle Referencia 2 </td>
+                                    <td>{{registro.calleReferencia2}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size: 15px" class="text-primary">Título SENESCYT</p>
+                    <div *ngIf="registro.institucionTitulo"
+                        class="col-lg-6 col-md-12 col-sm-12 col-xs-12 table-responsive" style="font-size: 16px">
+
+                        <table class="mat-elevation-z4 table">
+                            <tbody>
+                                <tr *ngIf="registro.nombreTitulo">
+                                    <td> Título </td>
+                                    <td>{{registro.nombreTitulo}}</td>
+                                </tr>
+                                <tr *ngIf="registro.institucionTitulo">
+                                    <td> Institución </td>
+                                    <td>{{registro.institucionTitulo}}</td>
+                                </tr>
+                                <tr *ngIf="registro.nivelTitulo">
+                                    <td> Nivel </td>
+                                    <td>{{registro.nivelTitulo}}</td>
+                                </tr>
+                                <tr *ngIf="registro.tipoTitulo">
+                                    <td> Área </td>
+                                    <td>{{registro.tipoTitulo}}</td>
+                                </tr>
+                                <tr *ngIf="registro.reconocidoPor">
+                                    <td> Reconocido por </td>
+                                    <td>{{registro.reconocidoPor}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 table-responsive" style="font-size: 16px">
+                        <table class="mat-elevation-z4 table">
+                            <tbody>
+                                <tr *ngIf="registro.agremiado">
+                                    <td> Agremiado </td>
+                                    <td>{{registro.agremiado}}</td>
+                                </tr>
+                                <tr *ngIf="registro.nombreGremio">
+                                    <td> Agremiado </td>
+                                    <td>{{registro.nombreGremio}}</td>
+                                </tr>
+                                <tr *ngIf="registro.perfilAcademicoDesc">
+                                    <td> Perfil Académico </td>
+                                    <td>{{registro.perfilAcademicoDesc}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="container p-3" *ngIf="mostrarBoton">
+                    <p style="font-size: 15px" class="text-primary">Certificado que acredite su formación</p>
+                    <button mat-raised-button class="botones" (click)="showDocument()">
+                        <mat-icon inline="true">attach_file</mat-icon> Ver Documento
+                    </button>
+                </div>
+                <p *ngIf="registro.estadoRegistros && registro.estadoRegistros != '0' && motivo"
+                    class="alert alert-primary m-3" role="alert">{{registro.estadoRegistros}}</p>
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+        </mat-card>
+    </div>
+</div>
+<div *ngIf="aprobar && !loading && registro" class="example-button-row text-center py-4">
+    <button mat-raised-button color="warn" class="m-1" routerLink="/Administracion/Aprobar">CANCELAR</button>
+    <button mat-raised-button class="botones m-1" (click)="tramiteService.devolverTramite(registro)">
+        <mat-icon inline="true">keyboard_return</mat-icon> DEVOLVER
+    </button>
+    <button mat-raised-button class="botones m-1" (click)="tramiteService.aprobarTramite(registro)">
+        <mat-icon inline="true">check</mat-icon> APROBAR
+    </button>
+    <button mat-raised-button class="botones m-1" (click)="tramiteService.rechazarTramite(registro)">
+        <mat-icon inline="true">clear</mat-icon> RECHAZAR
+    </button>
+</div>

@@ -1,0 +1,104 @@
+<div class="container">
+    <mat-card>
+        <mat-card-title>
+            <h5>Miembros</h5>
+            <hr>
+        </mat-card-title>
+        <mat-card-content>
+            <div *ngIf="!data.edit" [formGroup]="cedula">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Identificación</mat-label>
+                    <input type="text" matInput formControlName="cedula">
+                    <mat-error *ngIf="cedula.controls['cedula'].touched && cedula.controls['cedula'].invalid">
+                        <mat-error *ngIf="cedula.controls['cedula'].errors?.['required']">El campo cédula es requerido
+                        </mat-error>
+                        <mat-error *ngIf="cedula.controls['cedula'].errors?.['cedulaError']">La cédula ingresada es
+                            incorrecta
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <button mat-raised-button class="botones m-2" [disabled]="cedula.invalid || miembroEncontrado" (click)="buscar()">
+                    <mat-icon>search</mat-icon>
+                    Buscar
+                </button>
+                <hr>
+            </div>
+
+            <ng-container *ngIf="miembroEncontrado">
+                <div class="row">
+                    <div class="col-8">
+                        <mat-form-field class="example-full-width" appearance="legacy">
+                            <mat-label>Apellidos y Nombres</mat-label>
+                            <input matInput [value]="miembroEncontrado.nombres" disabled>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                        <mat-form-field class="example-full-width" appearance="legacy">
+                            <mat-label>Identificación</mat-label>
+                            <input matInput [value]="miembroEncontrado.identificacion" disabled>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div [formGroup]="form">
+                    <div class="row">
+                        <div class="col-8">
+                            <mat-form-field class="example-full-width" appearance="legacy">
+                                <mat-label>Cargo</mat-label>
+                                <mat-select formControlName="cargo" >
+                                    <mat-option *ngFor="let item of cargos" [value]="item.tipoCatalogoId">
+                                        {{item.nombre}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="f['cargo'].touched && f['cargo'].invalid">
+                                    <mat-error *ngIf="f['cargo'].errors?.['required']">El campo cargo es
+                                        requerido
+                                    </mat-error>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-4">
+                            <app-input-simple-form *ngIf="nroSENESCYT" formControlName="nroSENESCYT" [datos]="{titulo: 'Nro. SENESCYT'}">
+                            </app-input-simple-form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <mat-form-field class="example-full-width" appearance="legacy">
+                                <mat-label>Correo Electrónico</mat-label>
+                                <input matInput formControlName="email" [value]="miembroEncontrado.mail" >
+                                <mat-error *ngIf="f['email'].touched && f['email'].invalid">
+                                    <mat-error *ngIf="f['email'].errors?.['required']">El campo email es requerido
+                                    </mat-error>
+                                    <mat-error *ngIf="f['email'].errors?.['email']">El campo email es incorrecto
+                                    </mat-error>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field class="example-full-width" appearance="legacy">
+                                <mat-label>Teléfono personal</mat-label>
+                                <input type="text" matInput formControlName="telefono">
+                                <mat-icon matSuffix>phone</mat-icon>
+                                <mat-error *ngIf="f['telefono'].touched && f['telefono'].invalid">
+                                  <mat-error *ngIf="f['telefono'].errors?.['required']">El teléfono es requerido</mat-error>
+                                  <mat-error *ngIf="f['telefono'].errors?.['pattern']">El campo teléfono tiene máximo 10 caracteres</mat-error>
+                                  <mat-error *ngIf="f['telefono'].errors?.['soloNumeros']">El campo teléfono debe contener solo números
+                                  </mat-error>
+                                </mat-error>
+                              </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="text-center m-2">
+                        <button mat-raised-button color="warn" class="" matDialogClose >Salir</button>
+                        <button mat-raised-button class="botones" *ngIf="!data.edit" (click)="cancelarForm()" >Cancelar</button>
+                        <button mat-raised-button class="botones m-2" (click)="addMiembro()" [disabled]="!form.valid" [class.spinner]="this.loadingService.loading">
+                            <mat-icon>save</mat-icon> Añadir
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
+        </mat-card-content>
+    </mat-card>
+</div>

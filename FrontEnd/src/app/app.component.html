@@ -1,0 +1,11 @@
+<ngx-loading-bar color="#FF5252"></ngx-loading-bar>
+<div class="loading">
+  <ngx-loading [show]="loadingService.loading" [config]="loadingService.config"
+    [template]="loadingService.loadingTemplate">
+  </ngx-loading>
+  <span class="text" *ngIf="loadingService.loading" >{{loadingService.mensaje}}</span>
+  <router-outlet></router-outlet>
+</div>
+<div class="m-2 footer bg-secondary">
+  © 2022 Copyright - Distrito Metropolitano de Quito -  Registro Metropolitano de Fauna Urbana
+</div>

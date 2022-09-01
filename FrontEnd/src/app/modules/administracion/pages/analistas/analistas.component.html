@@ -1,0 +1,28 @@
+<mat-card class="mat-elevation-z8 m-3 example-card">
+  <mat-card-title class="bg-primary text-white text-center">Reasignación de Trámites</mat-card-title>
+  <button class="m-3 botones" mat-raised-button [disabled]="disableBoton" (click)="buscarAnalista()">
+    <mat-icon style="font-size: 22px;">search</mat-icon> Buscar Analista
+  </button>
+  <mat-spinner *ngIf="loadingService.loading" style="margin:0 auto;" class="p-3" [diameter]="25"></mat-spinner>
+  <div *ngIf="noExiste" class="container p-3">
+    <div class="alert alert-primary">
+      El analista no contiene trámites pendientes
+    </div>
+  </div>
+  <mat-horizontal-stepper *ngIf="listaRegistros.length>0" [linear]="true" #stepper>
+    <mat-step [completed]="completadoPrimer">
+      <ng-template matStepLabel>Registros del Analista</ng-template>
+      <app-lista-registros [dataArray]="listaRegistros" (enviarSeleccionados)="obtenerSeleccionados($event)"></app-lista-registros>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Reasignar a</ng-template>
+      <app-lista-analistas [dataArray]="listaAnalistas" (enviarSeleccionado)="obtenerSeleccionado($event)"></app-lista-analistas>
+      <div class="example-button-row text-center py-4">
+        <button mat-raised-button color="warn" class="m-2" (click)="reloadCurrentRoute()">Cancelar</button>
+        <button mat-raised-button class="botones" matStepperPrevious>Regresar</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+  <mat-card-content>
+  </mat-card-content>
+</mat-card>

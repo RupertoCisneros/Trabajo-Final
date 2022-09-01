@@ -1,0 +1,24 @@
+<div class="m-2" [formGroup]="form">
+  <p class="text-primary font-weight-bold">Nacionalidad</p>
+  <div class="row">
+    <div class="col-6">
+      <mat-form-field class="example-full-width" appearance="legacy">
+        <mat-label>País de origen</mat-label>
+        <mat-select *ngIf="paises" [formControl]="paisesCtrl" #selectPais>
+          <mat-option>
+            <ngx-mat-select-search [formControl]="paisesFilterCtrl" [placeholderLabel]="'Buscar...'" 
+              [noEntriesFoundLabel]="'No Encontrado'"></ngx-mat-select-search>
+          </mat-option>
+          <mat-option *ngFor="let pais of filteredPaises | async" [value]="pais.tipoCatalogoId">
+            {{pais.nombre}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="paisesCtrl.hasError('required')">El campo debe ser completado</mat-error>
+      </mat-form-field>
+      <div class="m-2 form-group" [formGroup]="form" *ngIf="abrir">
+        <p class="text-primary font-weight-bold">Visa de trabajo</p>
+        <app-multiplos-archivos-form formControlName="visa" [formatos]="formatos" [size]="500000" [max]="1" (envioArray)="recibirDocumento($event)"></app-multiplos-archivos-form>
+      </div>
+    </div>
+  </div>
+</div>

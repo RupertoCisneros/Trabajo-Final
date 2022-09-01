@@ -1,0 +1,70 @@
+<div >
+
+</div>
+<mat-card>
+  <mat-card-title *ngIf="uba">
+    <h2>Registro de Microchip UBA</h2>
+    <hr *ngIf="uba">
+  </mat-card-title>
+  <mat-card-content>
+    <button class="m-3 botones" mat-raised-button (click)="buscarTutor()">
+      <mat-icon style="font-size: 22px;">search</mat-icon> Buscar Tutor
+    </button>
+    <div *ngIf="noExiste" class="m-3 alert alert-primary">El usurario no esta registrado como tutor</div>
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <ng-container *ngIf="tutor">
+        <mat-card class="m-3">
+          <mat-card-title class="text-primary">Datos del Tutor</mat-card-title>
+          <mat-card-content>
+            <div class="row">
+              <div class="col-6">
+                <mat-form-field class="example-full-width" appearance="legacy">
+                  <mat-label>Denominación</mat-label>
+                  <input matInput [value]="tutor.denominacion" disabled>
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <mat-form-field class="example-full-width" appearance="legacy">
+                  <mat-label>Teléfono</mat-label>
+                  <input matInput [value]="tutor.telefono" disabled>
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <mat-form-field class="example-full-width" appearance="legacy">
+                  <mat-label>Correo Electrónico</mat-label>
+                  <input matInput [value]="tutor.email" disabled>
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <mat-form-field class="example-full-width" appearance="legacy">
+                  <mat-label>Dirección</mat-label>
+                  <input matInput [value]="tutor.direccion" disabled>
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="m-3">
+          <mat-card-title class="text-primary">Ingreso del Microchip</mat-card-title>
+          <mat-card-content>
+            <app-codigo-microchip-form formControlName="microchip"></app-codigo-microchip-form>
+            <app-informacion-considerada-form class="m-1" formControlName="informacionConsiderada">
+            </app-informacion-considerada-form>
+            <app-establecimiento-form class="m-1" formControlName="establecimiento"></app-establecimiento-form>
+            <app-observacion-form formControlName="observacion"></app-observacion-form>
+          </mat-card-content>
+        </mat-card>
+        <div class="text-center" *ngIf="!uba">
+          <button mat-raised-button class="m-2 botones" matStepperPrevious>Regresar</button>
+          <button mat-raised-button class="botones" matStepperNext [disabled]="!form.valid">Siguiente</button>
+        </div>
+        <div class="text-center" *ngIf="uba">
+          <button mat-raised-button class="m-2" color="warn" (click)="reloadCurrentRoute()">Cancelar</button>
+          <button mat-raised-button class="botones" [disabled]="!form.valid">Guardar</button>
+        </div>
+      </ng-container>
+
+
+    </form>
+  </mat-card-content>
+</mat-card>

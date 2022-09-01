@@ -1,0 +1,26 @@
+<div class="container">
+    <h5>Buscar Usuario </h5>
+    <div class="row g-3 p-3">
+      <div class="col-auto">
+        <form [formGroup]="form">
+          <mat-form-field class="example-full-width" appearance="legacy">
+            <mat-label>Ingrese el Username: </mat-label>
+            <input type="text" matInput formControlName="username">
+            <mat-error *ngIf="f['username'].touched && f['username'].invalid">
+              <mat-error *ngIf="f['username'].errors?.['required']">El campo username es requerido</mat-error>
+            </mat-error>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="col-auto">
+        <button mat-raised-button class="botones" (click)="buscarCedula()">
+          <mat-icon>search</mat-icon> 
+          Buscar
+        </button>
+      </div>
+    </div>
+    <div mat-dialog-actions align="center">
+      <button mat-raised-button color="warn" [mat-dialog-close]>Cancelar</button>
+    </div>
+  </div>
+  

@@ -1,0 +1,68 @@
+<mat-card class="mat-elevation-z8 m-3 example-card">
+    <mat-card-title class="bg-primary text-white text-center">Mis Registros</mat-card-title>
+    <button class="m-3 botones" mat-raised-button (click)="buscar()">
+      <mat-icon style="font-size: 22px;">search</mat-icon> Buscar
+    </button>
+    <button class="botones" mat-raised-button (click)="mostrarTodos()">
+      Mostrar todos
+    </button>
+    <mat-card-content>
+      <mat-spinner *ngIf="loading" style="margin:0 auto;" class="p-3" [diameter]="25"></mat-spinner>
+      <div *ngIf="sinRegistro" class="m-3 alert alert-primary">No se ha encontrado ningún registro.</div>
+      <div *ngIf="this.dataSource.data.length>0" class="p-3 table-responsive">
+        <mat-form-field appearance="standard">
+          <mat-label>Buscar</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Buscar.." #input>
+        </mat-form-field>
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="nroRegistro">
+            <th mat-header-cell *matHeaderCellDef> Número de Registro </th>
+            <td mat-cell *matCellDef="let element">
+              {{element.nroRegistro}} </td>
+          </ng-container>
+          <ng-container matColumnDef="nroIdentificacion">
+            <th mat-header-cell *matHeaderCellDef> Identificacion </th>
+            <td mat-cell *matCellDef="let element">
+              {{element.nroIdentificacion}} </td>
+          </ng-container>
+          <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef> descripcion </th>
+            <td mat-cell *matCellDef="let element">
+              {{element.descripcion}} </td>
+          </ng-container>
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Pertenece a </th>
+            <td mat-cell *matCellDef="let element">
+              {{element.nombre}} </td>
+          </ng-container>
+          <ng-container matColumnDef="fechaAsigna">
+            <th mat-header-cell *matHeaderCellDef> FECHA DE CREACIÓN </th>
+            <td mat-cell *matCellDef="let element">
+              {{element.fechaAsigna | date:'longDate'}} </td>
+          </ng-container>
+          <ng-container matColumnDef="estadoTramite">
+            <th mat-header-cell *matHeaderCellDef> Estado </th>
+            <td mat-cell *matCellDef="let element">
+              {{element.estadoTramite}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Acciones">
+            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button matTooltip="Visualizar" class="iconbutton" color="primary" (click)="enviarId(element)">
+                <mat-icon>visibility</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No se ha encontrado "{{input.value}}"</td>
+          </tr>
+        </table>
+      </div>
+      <mat-paginator [hidden]="!paginatorHidden" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons
+        showFirstLastButtons>
+      </mat-paginator>
+  
+    </mat-card-content>
+  </mat-card>

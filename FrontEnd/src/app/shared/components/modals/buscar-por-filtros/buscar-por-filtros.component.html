@@ -1,0 +1,60 @@
+<div class="container">
+  <h5 class="bg-primary text-white text-center">Buscar {{data.titulo}} </h5>
+  <section class="example-section">
+    <ul>
+      <li>
+        <mat-checkbox (change)="mostrarEstado($event)" color="primary">
+          Estado del registro
+        </mat-checkbox>
+      </li>
+      <li>
+        <mat-checkbox (change)="mostrarFecha($event)" color="primary">
+          Fechas de Registro
+        </mat-checkbox>
+      </li>
+    </ul>
+  </section>
+  <form [formGroup]="form">
+    <p *ngIf="mFecha" class="text-primary">Busqueda por fechas</p>
+    <div *ngIf="mFecha" class="row">
+      <div class="col-6">
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Fecha Desde:</mat-label>
+          <input matInput formControlName="fechaDesde" [matDatepicker]="desde">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="desde"></mat-datepicker-toggle>
+          <mat-datepicker #desde></mat-datepicker>
+          <mat-error *ngIf="f['fechaDesde'].touched && f['fechaDesde'].invalid">
+            <mat-error *ngIf="f['fechaDesde'].errors?.['required']">El campo es requerido</mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Fecha Hasta:</mat-label>
+          <input matInput formControlName="fechaHasta" [matDatepicker]="hasta">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="hasta"></mat-datepicker-toggle>
+          <mat-datepicker #hasta></mat-datepicker>
+          <mat-error *ngIf="f['fechaHasta'].touched && f['fechaHasta'].invalid">
+            <mat-error *ngIf="f['fechaHasta'].errors?.['required']">El campo es requerido</mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div *ngIf="mEstado" class="m-3">
+      <p class="text-primary">Busqueda por estado</p>
+      <mat-radio-group class="example-radio-group" formControlName="estado">
+        <mat-radio-button class="example-radio-button" color="primary" *ngFor="let estado of estados"
+          [value]="estado.tipoCatalogoId">{{estado.nombre}}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </form>
+  <div mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" [mat-dialog-close]>Cancelar</button>
+    <button mat-raised-button class="botones"  [disabled]="form.invalid" (click)="buscar()">
+      <mat-icon>search</mat-icon>
+      Buscar
+    </button>
+  </div>
+</div>

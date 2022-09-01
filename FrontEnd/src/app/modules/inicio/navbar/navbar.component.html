@@ -1,0 +1,52 @@
+<mat-toolbar class="bg-primary text-white p-2">
+  <button mat-icon-button (click)="sidenav.toggle()" class="menu-button" fxHide fxShow.lt-md>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img src="../assets/images/logo.png" class="imagen" width="3%" alt="">
+  <span style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+    REMETFU
+  </span>
+  <span class="head-menu">
+  </span>
+  <div>
+    <div style="font-size: 15px;">
+      <span class="usuario">{{ususarioLoged.name}} {{roles}}</span>
+      <button mat-icon-button color="primary" [matMenuTriggerFor]="men">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </div>
+
+    <mat-menu #men="matMenu">
+      <button mat-menu-item (click)="salir()">
+        <mat-icon>logout</mat-icon>
+        Cerrar Sesión
+      </button>
+    </mat-menu>
+  </div>
+  <mat-divider [vertical]="true" class="m-2 imagen" style="height:80%"></mat-divider>
+  <img src="../assets/images/logo-menu.png" class="img-fluid  imagen" width="4%" alt="">
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav class="bg-primary" #sidenav [mode]="opened === false ? 'over' : 'side'" [opened]="opened === true">
+    <mat-nav-list>
+      <a mat-list-item routerLink="Inicio" [routerLinkActive]="['is-active']">
+        <mat-icon class="menu-icon">home</mat-icon><span style="font-size: 15px;" class="text-white">Inicio</span>
+      </a>
+      <mat-divider></mat-divider>
+      <div *ngIf="loading">
+        <br>
+        <mat-spinner style="margin: auto;" [diameter]="20"></mat-spinner>
+      </div>
+      <app-menu *ngFor="let item of menu" [item]="item"></app-menu>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="">
+    <div class="container p-3">
+      <router-outlet></router-outlet>
+      <hr>
+    </div>
+    <div class="m-2 footer bg-secondary">
+      © 2022 Copyright - Distrito Metropolitano de Quito - Registro Metropolitano de Fauna Urbana
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

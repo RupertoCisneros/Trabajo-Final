@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>{{data.titulo}} </h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>{{data.titulo}}</mat-label>
+      <textarea matInput formControlName="motivo" placeholder="Escriba el motivo"></textarea>
+      <mat-error *ngIf="f['motivo'].touched && f['motivo'].invalid">
+        <mat-error *ngIf="f['motivo'].errors?.['required']">El campo motivo es requerido</mat-error>
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+</div>
+<div mat-dialog-actions align="center">
+  <button mat-raised-button color="warn" [mat-dialog-close]>Cancelar</button>
+  <button mat-raised-button class="botones" (click)="enviarMotivo()">Aceptar</button>
+</div>

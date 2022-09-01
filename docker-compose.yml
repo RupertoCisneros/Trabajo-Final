@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  remetfu:
+    image: remetfu_backend
+    build:
+      context: .
+      dockerfile: ./BackEnd/Dockerfile
+    ports:
+     - 8282:8282
+  reporting:
+    image: remetfu_reporting
+    build:
+      context: .
+      dockerfile: ./Reporting/Dockerfile
+    ports:
+      - 8383:8383  
+  frontend:
+    container_name: remetfu_angular
+    build: 
+      context: FrontEnd
+      dockerfile: Dockerfile
+    ports:
+      - 5500:80
+    environment:
+      NODE_ENV: production    

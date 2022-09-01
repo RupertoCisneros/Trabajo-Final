@@ -1,0 +1,16 @@
+<div class="m-2 form-group" [formGroup]="form">
+    <p class="text-primary font-weight-bold">{{datos.titulo}}</p>
+    <mat-form-field class="example-full-width" appearance="legacy">
+      <mat-label>{{datos.subTitulo}}</mat-label>
+      <mat-select #sl formControlName="data" multiple>
+        <mat-option *ngFor="let item of array" [value]="item">{{item.nombre}}</mat-option>
+        <div class="text-center m-2">
+          <button mat-raised-button class="botones" (click)="sl.close()">Aceptar</button>
+        </div>
+      </mat-select>
+      <mat-error *ngIf="f['data'].touched && f['data'].invalid">
+        <mat-error *ngIf="f['data'].errors?.['required']">El campo {{datos.titulo}} es requerido</mat-error>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  

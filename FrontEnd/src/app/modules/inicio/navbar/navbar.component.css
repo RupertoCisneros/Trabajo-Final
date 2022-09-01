@@ -1,0 +1,73 @@
+mat-sidenav-container,
+mat-sidenav-content,
+mat-sidenav {
+  height: 92vh;
+}
+
+.head-menu {
+  flex: 1 1 auto;
+
+}
+
+.menu-icon {
+  color: white;
+  margin-right: 4px;
+  font-size: 16pt;
+}
+
+@media only screen and (min-width: 992px) {
+  .mat-sidenav {
+    width: 250px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .mat-sidenav {
+    width: 250px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .mat-sidenav {
+    width: 250px;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .mat-sidenav {
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .imagen {
+    display: none;
+  }
+
+  .usuario {
+    display: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, .26);
+  border-radius: 5px;
+}
+
+.text {
+  z-index: 2000;
+  position: absolute;
+  color: white;
+  left: 0;
+  right: 0;
+  text-align: center;
+  top: calc(50% + 40px);
+}
+.is-active {
+  color: #fff;
+  background-color: #0d6efd !important;
+}

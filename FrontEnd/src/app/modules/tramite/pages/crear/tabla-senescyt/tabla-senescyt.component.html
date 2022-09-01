@@ -1,0 +1,71 @@
+<ng-container *ngIf="dataSource.data.length > 0">
+  <h6 class="text-center py-4">Títulos del SENESCYT</h6>
+  <mat-form-field appearance="standard">
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="buscar..." #input>
+  </mat-form-field>
+  <div class="mat-elevation-z8 p-4 table-responsive">
+    <p class="text-secondary">Por favor seleccione solo un título para continuar</p>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)"
+                        [aria-label]="checkboxLabel(row)"
+                        color = "primary"
+                        >
+          </mat-checkbox>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="numeroRegistro">
+        <th mat-header-cell *matHeaderCellDef> Número de registro </th>
+        <td mat-cell *matCellDef="let element">
+          {{element.numeroRegistro}}</td>
+      </ng-container>
+      <ng-container matColumnDef="numeroIdentificacion">
+        <th mat-header-cell *matHeaderCellDef> Identificación </th>
+        <td mat-cell *matCellDef="let element">
+          {{element.numeroIdentificacion}} </td>
+      </ng-container>
+      <ng-container matColumnDef="areaTitulo">
+        <th mat-header-cell *matHeaderCellDef> Área </th>
+        <td mat-cell *matCellDef="let element"> {{element.areaTitulo}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="fechaRegistro">
+        <th mat-header-cell *matHeaderCellDef> Fecha </th>
+        <td mat-cell *matCellDef="let element">
+          {{element.fechaRegistro | date:'longDate'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="ies">
+        <th mat-header-cell *matHeaderCellDef> IES </th>
+        <td mat-cell *matCellDef="let element"> {{element.ies}} </td>
+      </ng-container>
+      <ng-container matColumnDef="nivel">
+        <th mat-header-cell *matHeaderCellDef> Nivel </th>
+        <td mat-cell *matCellDef="let element"> {{element.nivel}} </td>
+      </ng-container>
+      <ng-container matColumnDef="nombreTitulo">
+        <th mat-header-cell *matHeaderCellDef> Título </th>
+        <td mat-cell *matCellDef="let element">
+          {{element.nombreTitulo}} </td>
+      </ng-container>
+      <ng-container matColumnDef="subArea">
+        <th mat-header-cell *matHeaderCellDef> Sub Área </th>
+        <td mat-cell *matCellDef="let element"> {{element.subArea}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+  </div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" aria-label="">
+  </mat-paginator>
+</ng-container>
+<div *ngIf="this.dataSource.data.length===0" class="alert alert-primary">No contiene Títulos del SENESCYT</div>
+  

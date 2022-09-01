@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://mdmq.quito.gob.ec/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://mdmq.quito.gob.ec/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://mdmq.quito.gob.ec/">
+      <s:element name="fn_consulta_buscarPersonaDS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cedulaRuc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fn_consulta_buscarPersonaDSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fn_consulta_buscarPersonaDSResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMensaje" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="perPersona" type="tns:clsPerPersonaCompleta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="clsPerPersonaCompleta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PE_PERSONA_ID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_DENOMINACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_NOMBRES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_APELLIDOS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_RAZON_SOCIAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_NUM_IDENTIFICACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_TIP_IDENTIFICACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_TIP_PERSONA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_MAIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_ESTADO_TRAN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_ESTADO_DESC" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PE_FECHA_NACIMIENTO" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PE_FECHA_FALLECIMIENTO" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_ESTADO_CIVIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_CEDULA_CONYUGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_NOMBRE_CONYUGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_NACIONALIDAD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_CELULAR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_TELEFONO" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Cabecera" type="tns:Cabecera" />
+      <s:complexType name="Cabecera">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="fn_consulta_buscarPersonaCompleto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIdentificacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strTipoIdentificacion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fn_consulta_buscarPersonaCompletoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fn_consulta_buscarPersonaCompletoResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMensaje" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="perPersona" type="tns:clsPerPersonaCompleta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fn_consulta_telefonos_direcciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intPersonaID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fn_consulta_telefonos_direccionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fn_consulta_telefonos_direccionesResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMensaje" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lstPerTelefono" type="tns:ArrayOfClsPerTelefono" />
+            <s:element minOccurs="0" maxOccurs="1" name="lstPerDireccion" type="tns:ArrayOfClsPerDireccion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfClsPerTelefono">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="clsPerTelefono" nillable="true" type="tns:clsPerTelefono" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clsPerTelefono">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PT_NUM_TELEFONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PT_TIP_TELEFONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PT_PROVEEDOR" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PT_TELEFONO_ID" nillable="true" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfClsPerDireccion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="clsPerDireccion" nillable="true" type="tns:clsPerDireccion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clsPerDireccion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DR_DIRECCION_ID" nillable="true" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="DR_TIPO_DIRECCION" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_NOTIFICACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_PROVINCIA_NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_CALLE_PRINCIPAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_NUMERO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_INTERSECCION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_REFERENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_CANTON_NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_PARROQUIA_NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_NUM_PREDIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_EDIFICIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_BARRIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_MANZANA_DESC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_ESTADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_USUARIO_CREACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_USUARIO_MODIFICACION" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="fn_consulta_tipo_direccion">
+        <s:complexType />
+      </s:element>
+      <s:element name="fn_consulta_tipo_direccionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fn_consulta_tipo_direccionResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMensaje" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lstPerTipoDireccion" type="tns:ArrayOfClsPerTipoDireccion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfClsPerTipoDireccion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="clsPerTipoDireccion" nillable="true" type="tns:clsPerTipoDireccion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clsPerTipoDireccion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TD_TIPO_DIRECCION_ID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="TD_TIPO_DIRECCION" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="fn_consulta_proveedor_telf">
+        <s:complexType />
+      </s:element>
+      <s:element name="fn_consulta_proveedor_telfResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fn_consulta_proveedor_telfResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMensaje" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lstPerProveedorTelf" type="tns:ArrayOfClsPerProveedorTelf" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfClsPerProveedorTelf">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="clsPerProveedorTelf" nillable="true" type="tns:clsPerProveedorTelf" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clsPerProveedorTelf">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PRV_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PRV_DESCRIPCION" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="fn_actualizar_informacion_persona">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intPersonaID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="strTipo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCorreo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lstTelefonos" type="tns:ArrayOfClsPerTelefono" />
+            <s:element minOccurs="0" maxOccurs="1" name="clsDireccion" type="tns:clsPerDireccion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fn_actualizar_informacion_personaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fn_actualizar_informacion_personaResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMensaje" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fn_actualizar_informacion_persona_Patentes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intPersonaID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="strTipo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCorreo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lstTelefonos" type="tns:ArrayOfClsPerTelefono" />
+            <s:element minOccurs="0" maxOccurs="1" name="clsDireccion" type="tns:clsPerDireccion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fn_actualizar_informacion_persona_PatentesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fn_actualizar_informacion_persona_PatentesResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMensaje" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="telefonoId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="direccionId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fn_actualizar_Direccion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intPersonaID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="clsDireccion" type="tns:clsPerDireccion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fn_actualizar_DireccionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fn_actualizar_DireccionResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMensaje" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fn_consulta_buscarPersona_CIM">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intPersonaID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fn_consulta_buscarPersona_CIMResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fn_consulta_buscarPersona_CIMResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMensaje" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="perPersona" type="tns:clsPerPersonaCompleta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fn_consulta_buscarPersonaCompletoDiscapacidad">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIdentificacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strTipoIdentificacion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fn_consulta_buscarPersonaCompletoDiscapacidadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fn_consulta_buscarPersonaCompletoDiscapacidadResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMensaje" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="perPersona" type="tns:clsPersonasCompletaConDatosDiscapacidad" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="clsPersonasCompletaConDatosDiscapacidad">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PE_PERSONA_ID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_DENOMINACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_NOMBRES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_APELLIDOS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_RAZON_SOCIAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_NUM_IDENTIFICACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_TIP_IDENTIFICACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_TIP_PERSONA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_MAIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_ESTADO_TRAN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_ESTADO_DESC" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PE_FECHA_NACIMIENTO" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PE_FECHA_FALLECIMIENTO" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_ESTADO_CIVIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_CEDULA_CONYUGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_NOMBRE_CONYUGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_NACIONALIDAD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_NUMERO_CARNET_CONADIS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PE_PORCENTAJE_DISCAPACIDAD" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE_TIPO_DISCAPACIDAD" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="fn_consulta_buscarPersona_CIM_ListaCIMHomologados">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intPersonaID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fn_consulta_buscarPersona_CIM_ListaCIMHomologadosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fn_consulta_buscarPersona_CIM_ListaCIMHomologadosResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMensaje" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lstPerPersona" type="tns:ArrayOfClsPerPersonaCompleta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfClsPerPersonaCompleta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="clsPerPersonaCompleta" nillable="true" type="tns:clsPerPersonaCompleta" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="fn_consulta_buscarPersonaNaturalBaseLocalSeguridades">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIdentificacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strTipoIdentificacion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fn_consulta_buscarPersonaNaturalBaseLocalSeguridadesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fn_consulta_buscarPersonaNaturalBaseLocalSeguridadesResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMensaje" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="perPersona" type="tns:clsPerPersonaCompleta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fn_actualiza_Personas_Cervus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intPersonaID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fn_actualiza_Personas_CervusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fn_actualiza_Personas_CervusResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMensaje" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="perPersona" type="tns:clsPersonasCompletaConDatosDiscapacidad" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="fn_consulta_buscarPersonaDSSoapIn">
+    <wsdl:part name="parameters" element="tns:fn_consulta_buscarPersonaDS" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_buscarPersonaDSSoapOut">
+    <wsdl:part name="parameters" element="tns:fn_consulta_buscarPersonaDSResponse" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_buscarPersonaDSCabecera">
+    <wsdl:part name="Cabecera" element="tns:Cabecera" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_buscarPersonaCompletoSoapIn">
+    <wsdl:part name="parameters" element="tns:fn_consulta_buscarPersonaCompleto" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_buscarPersonaCompletoSoapOut">
+    <wsdl:part name="parameters" element="tns:fn_consulta_buscarPersonaCompletoResponse" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_buscarPersonaCompletoCabecera">
+    <wsdl:part name="Cabecera" element="tns:Cabecera" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_telefonos_direccionesSoapIn">
+    <wsdl:part name="parameters" element="tns:fn_consulta_telefonos_direcciones" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_telefonos_direccionesSoapOut">
+    <wsdl:part name="parameters" element="tns:fn_consulta_telefonos_direccionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_telefonos_direccionesCabecera">
+    <wsdl:part name="Cabecera" element="tns:Cabecera" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_tipo_direccionSoapIn">
+    <wsdl:part name="parameters" element="tns:fn_consulta_tipo_direccion" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_tipo_direccionSoapOut">
+    <wsdl:part name="parameters" element="tns:fn_consulta_tipo_direccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_tipo_direccionCabecera">
+    <wsdl:part name="Cabecera" element="tns:Cabecera" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_proveedor_telfSoapIn">
+    <wsdl:part name="parameters" element="tns:fn_consulta_proveedor_telf" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_proveedor_telfSoapOut">
+    <wsdl:part name="parameters" element="tns:fn_consulta_proveedor_telfResponse" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_proveedor_telfCabecera">
+    <wsdl:part name="Cabecera" element="tns:Cabecera" />
+  </wsdl:message>
+  <wsdl:message name="fn_actualizar_informacion_personaSoapIn">
+    <wsdl:part name="parameters" element="tns:fn_actualizar_informacion_persona" />
+  </wsdl:message>
+  <wsdl:message name="fn_actualizar_informacion_personaSoapOut">
+    <wsdl:part name="parameters" element="tns:fn_actualizar_informacion_personaResponse" />
+  </wsdl:message>
+  <wsdl:message name="fn_actualizar_informacion_personaCabecera">
+    <wsdl:part name="Cabecera" element="tns:Cabecera" />
+  </wsdl:message>
+  <wsdl:message name="fn_actualizar_informacion_persona_PatentesSoapIn">
+    <wsdl:part name="parameters" element="tns:fn_actualizar_informacion_persona_Patentes" />
+  </wsdl:message>
+  <wsdl:message name="fn_actualizar_informacion_persona_PatentesSoapOut">
+    <wsdl:part name="parameters" element="tns:fn_actualizar_informacion_persona_PatentesResponse" />
+  </wsdl:message>
+  <wsdl:message name="fn_actualizar_informacion_persona_PatentesCabecera">
+    <wsdl:part name="Cabecera" element="tns:Cabecera" />
+  </wsdl:message>
+  <wsdl:message name="fn_actualizar_DireccionSoapIn">
+    <wsdl:part name="parameters" element="tns:fn_actualizar_Direccion" />
+  </wsdl:message>
+  <wsdl:message name="fn_actualizar_DireccionSoapOut">
+    <wsdl:part name="parameters" element="tns:fn_actualizar_DireccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="fn_actualizar_DireccionCabecera">
+    <wsdl:part name="Cabecera" element="tns:Cabecera" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_buscarPersona_CIMSoapIn">
+    <wsdl:part name="parameters" element="tns:fn_consulta_buscarPersona_CIM" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_buscarPersona_CIMSoapOut">
+    <wsdl:part name="parameters" element="tns:fn_consulta_buscarPersona_CIMResponse" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_buscarPersona_CIMCabecera">
+    <wsdl:part name="Cabecera" element="tns:Cabecera" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_buscarPersonaCompletoDiscapacidadSoapIn">
+    <wsdl:part name="parameters" element="tns:fn_consulta_buscarPersonaCompletoDiscapacidad" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_buscarPersonaCompletoDiscapacidadSoapOut">
+    <wsdl:part name="parameters" element="tns:fn_consulta_buscarPersonaCompletoDiscapacidadResponse" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_buscarPersonaCompletoDiscapacidadCabecera">
+    <wsdl:part name="Cabecera" element="tns:Cabecera" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_buscarPersona_CIM_ListaCIMHomologadosSoapIn">
+    <wsdl:part name="parameters" element="tns:fn_consulta_buscarPersona_CIM_ListaCIMHomologados" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_buscarPersona_CIM_ListaCIMHomologadosSoapOut">
+    <wsdl:part name="parameters" element="tns:fn_consulta_buscarPersona_CIM_ListaCIMHomologadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_buscarPersona_CIM_ListaCIMHomologadosCabecera">
+    <wsdl:part name="Cabecera" element="tns:Cabecera" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_buscarPersonaNaturalBaseLocalSeguridadesSoapIn">
+    <wsdl:part name="parameters" element="tns:fn_consulta_buscarPersonaNaturalBaseLocalSeguridades" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_buscarPersonaNaturalBaseLocalSeguridadesSoapOut">
+    <wsdl:part name="parameters" element="tns:fn_consulta_buscarPersonaNaturalBaseLocalSeguridadesResponse" />
+  </wsdl:message>
+  <wsdl:message name="fn_consulta_buscarPersonaNaturalBaseLocalSeguridadesCabecera">
+    <wsdl:part name="Cabecera" element="tns:Cabecera" />
+  </wsdl:message>
+  <wsdl:message name="fn_actualiza_Personas_CervusSoapIn">
+    <wsdl:part name="parameters" element="tns:fn_actualiza_Personas_Cervus" />
+  </wsdl:message>
+  <wsdl:message name="fn_actualiza_Personas_CervusSoapOut">
+    <wsdl:part name="parameters" element="tns:fn_actualiza_Personas_CervusResponse" />
+  </wsdl:message>
+  <wsdl:message name="fn_actualiza_Personas_CervusCabecera">
+    <wsdl:part name="Cabecera" element="tns:Cabecera" />
+  </wsdl:message>
+  <wsdl:portType name="ServicePersonasSoap">
+    <wsdl:operation name="fn_consulta_buscarPersonaDS">
+      <wsdl:input message="tns:fn_consulta_buscarPersonaDSSoapIn" />
+      <wsdl:output message="tns:fn_consulta_buscarPersonaDSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_buscarPersonaCompleto">
+      <wsdl:input message="tns:fn_consulta_buscarPersonaCompletoSoapIn" />
+      <wsdl:output message="tns:fn_consulta_buscarPersonaCompletoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_telefonos_direcciones">
+      <wsdl:input message="tns:fn_consulta_telefonos_direccionesSoapIn" />
+      <wsdl:output message="tns:fn_consulta_telefonos_direccionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_tipo_direccion">
+      <wsdl:input message="tns:fn_consulta_tipo_direccionSoapIn" />
+      <wsdl:output message="tns:fn_consulta_tipo_direccionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_proveedor_telf">
+      <wsdl:input message="tns:fn_consulta_proveedor_telfSoapIn" />
+      <wsdl:output message="tns:fn_consulta_proveedor_telfSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="fn_actualizar_informacion_persona">
+      <wsdl:input message="tns:fn_actualizar_informacion_personaSoapIn" />
+      <wsdl:output message="tns:fn_actualizar_informacion_personaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="fn_actualizar_informacion_persona_Patentes">
+      <wsdl:input message="tns:fn_actualizar_informacion_persona_PatentesSoapIn" />
+      <wsdl:output message="tns:fn_actualizar_informacion_persona_PatentesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="fn_actualizar_Direccion">
+      <wsdl:input message="tns:fn_actualizar_DireccionSoapIn" />
+      <wsdl:output message="tns:fn_actualizar_DireccionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_buscarPersona_CIM">
+      <wsdl:input message="tns:fn_consulta_buscarPersona_CIMSoapIn" />
+      <wsdl:output message="tns:fn_consulta_buscarPersona_CIMSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_buscarPersonaCompletoDiscapacidad">
+      <wsdl:input message="tns:fn_consulta_buscarPersonaCompletoDiscapacidadSoapIn" />
+      <wsdl:output message="tns:fn_consulta_buscarPersonaCompletoDiscapacidadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_buscarPersona_CIM_ListaCIMHomologados">
+      <wsdl:input message="tns:fn_consulta_buscarPersona_CIM_ListaCIMHomologadosSoapIn" />
+      <wsdl:output message="tns:fn_consulta_buscarPersona_CIM_ListaCIMHomologadosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_buscarPersonaNaturalBaseLocalSeguridades">
+      <wsdl:input message="tns:fn_consulta_buscarPersonaNaturalBaseLocalSeguridadesSoapIn" />
+      <wsdl:output message="tns:fn_consulta_buscarPersonaNaturalBaseLocalSeguridadesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="fn_actualiza_Personas_Cervus">
+      <wsdl:input message="tns:fn_actualiza_Personas_CervusSoapIn" />
+      <wsdl:output message="tns:fn_actualiza_Personas_CervusSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicePersonasSoap" type="tns:ServicePersonasSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="fn_consulta_buscarPersonaDS">
+      <soap:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_buscarPersonaDS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:fn_consulta_buscarPersonaDSCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_buscarPersonaCompleto">
+      <soap:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_buscarPersonaCompleto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:fn_consulta_buscarPersonaCompletoCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_telefonos_direcciones">
+      <soap:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_telefonos_direcciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:fn_consulta_telefonos_direccionesCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_tipo_direccion">
+      <soap:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_tipo_direccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:fn_consulta_tipo_direccionCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_proveedor_telf">
+      <soap:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_proveedor_telf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:fn_consulta_proveedor_telfCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_actualizar_informacion_persona">
+      <soap:operation soapAction="http://mdmq.quito.gob.ec/fn_actualizar_informacion_persona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:fn_actualizar_informacion_personaCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_actualizar_informacion_persona_Patentes">
+      <soap:operation soapAction="http://mdmq.quito.gob.ec/fn_actualizar_informacion_persona_Patentes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:fn_actualizar_informacion_persona_PatentesCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_actualizar_Direccion">
+      <soap:operation soapAction="http://mdmq.quito.gob.ec/fn_actualizar_Direccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:fn_actualizar_DireccionCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_buscarPersona_CIM">
+      <soap:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_buscarPersona_CIM" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:fn_consulta_buscarPersona_CIMCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_buscarPersonaCompletoDiscapacidad">
+      <soap:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_buscarPersonaCompletoDiscapacidad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:fn_consulta_buscarPersonaCompletoDiscapacidadCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_buscarPersona_CIM_ListaCIMHomologados">
+      <soap:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_buscarPersona_CIM_ListaCIMHomologados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:fn_consulta_buscarPersona_CIM_ListaCIMHomologadosCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_buscarPersonaNaturalBaseLocalSeguridades">
+      <soap:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_buscarPersonaNaturalBaseLocalSeguridades" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:fn_consulta_buscarPersonaNaturalBaseLocalSeguridadesCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_actualiza_Personas_Cervus">
+      <soap:operation soapAction="http://mdmq.quito.gob.ec/fn_actualiza_Personas_Cervus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:fn_actualiza_Personas_CervusCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicePersonasSoap12" type="tns:ServicePersonasSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="fn_consulta_buscarPersonaDS">
+      <soap12:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_buscarPersonaDS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:fn_consulta_buscarPersonaDSCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_buscarPersonaCompleto">
+      <soap12:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_buscarPersonaCompleto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:fn_consulta_buscarPersonaCompletoCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_telefonos_direcciones">
+      <soap12:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_telefonos_direcciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:fn_consulta_telefonos_direccionesCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_tipo_direccion">
+      <soap12:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_tipo_direccion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:fn_consulta_tipo_direccionCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_proveedor_telf">
+      <soap12:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_proveedor_telf" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:fn_consulta_proveedor_telfCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_actualizar_informacion_persona">
+      <soap12:operation soapAction="http://mdmq.quito.gob.ec/fn_actualizar_informacion_persona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:fn_actualizar_informacion_personaCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_actualizar_informacion_persona_Patentes">
+      <soap12:operation soapAction="http://mdmq.quito.gob.ec/fn_actualizar_informacion_persona_Patentes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:fn_actualizar_informacion_persona_PatentesCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_actualizar_Direccion">
+      <soap12:operation soapAction="http://mdmq.quito.gob.ec/fn_actualizar_Direccion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:fn_actualizar_DireccionCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_buscarPersona_CIM">
+      <soap12:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_buscarPersona_CIM" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:fn_consulta_buscarPersona_CIMCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_buscarPersonaCompletoDiscapacidad">
+      <soap12:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_buscarPersonaCompletoDiscapacidad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:fn_consulta_buscarPersonaCompletoDiscapacidadCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_buscarPersona_CIM_ListaCIMHomologados">
+      <soap12:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_buscarPersona_CIM_ListaCIMHomologados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:fn_consulta_buscarPersona_CIM_ListaCIMHomologadosCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_consulta_buscarPersonaNaturalBaseLocalSeguridades">
+      <soap12:operation soapAction="http://mdmq.quito.gob.ec/fn_consulta_buscarPersonaNaturalBaseLocalSeguridades" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:fn_consulta_buscarPersonaNaturalBaseLocalSeguridadesCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fn_actualiza_Personas_Cervus">
+      <soap12:operation soapAction="http://mdmq.quito.gob.ec/fn_actualiza_Personas_Cervus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:fn_actualiza_Personas_CervusCabecera" part="Cabecera" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicePersonas">
+    <wsdl:port name="ServicePersonasSoap" binding="tns:ServicePersonasSoap">
+      <soap:address location="http://172.22.8.108/MDMQ_WS_PERSONAS2012/Presentacion/PersonaSQL.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicePersonasSoap12" binding="tns:ServicePersonasSoap12">
+      <soap12:address location="http://172.22.8.108/MDMQ_WS_PERSONAS2012/Presentacion/PersonaSQL.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

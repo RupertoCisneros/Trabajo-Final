@@ -1,0 +1,83 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+::-webkit-scrollbar {
+    height: 4px;
+    width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, .26);
+    border-radius: 5px;
+}
+
+.botones {
+    background-color: #2fa4e7;
+    color: white;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-header-cell {
+    font-size: medium;
+    color: white;
+    background: #2fa4e7;
+    text-transform: uppercase;
+}
+
+th.mat-header-cell {
+    text-align: center !important;
+}
+
+td.mat-cell {
+    text-align: center !important;
+}
+
+.mat-column-Acciones {
+    text-align: center !important;
+}
+
+/* Estilos a los mensajes */
+.green-snackbar {
+    background: #00B74A;
+    color: white !important;
+}
+
+.warning-snackbar {
+    background: #1266F1;
+    color: white;
+}
+
+.red-snackbar button {
+    background: #37474F;
+    color: white;
+}
+
+.warning-snackbar button {
+    background: #37474F;
+    color: white;
+}
+
+.green-snackbar button {
+    background: #37474F;
+    color: white;
+}
+
+.red-snackbar {
+    background: #c71c22;
+    color: white;
+}
+
+.button-snackbar button {
+    background-color: #2fa4e7;
+    color: white;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin: 0px;
+}

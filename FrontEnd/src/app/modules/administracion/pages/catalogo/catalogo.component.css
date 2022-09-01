@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+  }
+  
+  .table-header {
+    width: 100%;
+    margin: auto;
+  }
+  
+  th.mat-header-cell {
+    text-align: center !important;
+  }
+  
+  .centrado {
+    margin: 0 auto;
+    width: 80%;
+  }

@@ -1,0 +1,64 @@
+<mat-card class="example-card">
+  <mat-card-title class="bg-primary text-white text-center">Mis trámites</mat-card-title>
+  <div *ngIf="loadingService.loading">
+    <br>
+    <mat-spinner style="margin: auto;" [diameter]="20"></mat-spinner>
+  </div>
+  <div *ngIf="this.dataSource.data.length===0 && !loadingService.loading" class="text-center alert alert-primary">No contiene ningún trámite</div>
+  <mat-card-content *ngIf="!loading">
+    <div *ngIf="this.dataSource.data.length>0" class="mat-elevation-z8 p-4 table-responsive">
+      <mat-form-field appearance="legacy">
+        <mat-label>Buscar</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar Trámite..." #input>
+      </mat-form-field>
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="nroRegistro">
+          <th mat-header-cell *matHeaderCellDef> NÚMERO DE REGISTRO </th>
+          <td mat-cell *matCellDef="let element">
+            {{element.nroRegistro}} </td>
+        </ng-container>
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef> TIPO DE REGISTRO </th>
+          <td mat-cell *matCellDef="let element">
+            {{element.descripcion}} </td>
+        </ng-container>
+        <ng-container matColumnDef="fechaCreacion">
+          <th mat-header-cell *matHeaderCellDef>FECHA DE REGISTRO</th>
+          <td mat-cell *matCellDef="let element">
+            {{element.fechaCreacion | date:'longDate'}} </td>
+        </ng-container>
+        <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef> ESTADO </th>
+          <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Acciones">
+          <th mat-header-cell *matHeaderCellDef> ACCIONES </th>
+          <td mat-cell *matCellDef="let element">
+
+            <button mat-icon-button matTooltip="Visualizar" class="iconbutton" color="primary" [disabled]="element.subregistro != 2 && element.subregistro != 11"  (click)="visualizar(element.registroProfesionalId)">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Editar" (click)="editarRegistro(element)" [disabled]="element.estado!='DEVUELTO'" class="iconbutton"
+            color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No se ha encontrado: "{{input.value}}"</td>
+        </tr>
+      </table>
+      <mat-paginator [hidden]="!paginatorHidden" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons showFirstLastButtons>
+      </mat-paginator>
+    </div>
+
+  </mat-card-content>
+  <mat-divider inset></mat-divider>
+  <mat-card-actions>
+  </mat-card-actions>
+  <mat-card-footer>
+  </mat-card-footer>
+</mat-card>

@@ -1,0 +1,66 @@
+<div class="container">
+  <h5 class="bg-primary text-white text-center">{{data.titulo | uppercase}} </h5>
+  <p>Buscar por:</p>
+  <mat-radio-group [(ngModel)]="escogido">
+    <mat-radio-button color="primary" value="1">Identificación</mat-radio-button>
+    <mat-radio-button color="primary" value="2">Nombre de Usuario</mat-radio-button>
+  </mat-radio-group>
+
+  <form [formGroup]="form">
+    <mat-form-field *ngIf="escogido === '1'" class="example-full-width" appearance="legacy">
+      <mat-label>Identificación</mat-label>
+      <input type="text" matInput formControlName="cedula">
+      <mat-error *ngIf="f['cedula'].touched && f['cedula'].invalid">
+        <mat-error *ngIf="f['cedula'].errors?.['required']">El campo cédula es requerido</mat-error>
+        <mat-error *ngIf="f['cedula'].errors?.['cedulaError']">La cédula ingresada es incorrecta</mat-error>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field *ngIf="escogido === '2'" class="example-full-width" appearance="legacy">
+      <mat-label>Nombre de Usuario</mat-label>
+      <input type="text" matInput formControlName="usuario">
+      <mat-error *ngIf="f['usuario'].touched && f['usuario'].invalid">
+        <mat-error *ngIf="f['usuario'].errors?.['required']">El campo es requerido</mat-error>
+      </mat-error>
+    </mat-form-field>
+    <button *ngIf="escogido" mat-raised-button class="botones m-2"  [disabled]="form.invalid" (click)="buscar()">
+      <mat-icon>search</mat-icon>
+      Buscar
+    </button>
+  </form>
+  <mat-spinner *ngIf="loading" style="margin:0 auto;" class="p-3" [diameter]="25"></mat-spinner>
+  <div *ngIf="noExiste" class="text-center alert alert-primary">El usuario existe.</div>
+  <div *ngIf="this.dataSource.data.length>0" class="table-responsive">
+    <mat-form-field appearance="standard">
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Buscar.." #input>
+    </mat-form-field>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="nroIdentificacion">
+        <th mat-header-cell *matHeaderCellDef> Identificacion </th>
+        <td mat-cell *matCellDef="let element"> {{element.nroIdentificacion}} </td>
+      </ng-container>
+      <ng-container matColumnDef="usuario">
+        <th mat-header-cell *matHeaderCellDef> Nombre del Usuario </th>
+        <td mat-cell *matCellDef="let element"> {{element.denominacion}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button matTooltip="" class="botones"
+            (click)="seleccionarUsuario(element)">
+            Seleccionar
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <mat-paginator [hidden]="!paginatorHidden" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons showFirstLastButtons>
+  </mat-paginator>
+
+  <div mat-dialog-actions align="end">
+    <button mat-raised-button class="botones" [mat-dialog-close]>Cancelar</button>
+  </div>
+</div>

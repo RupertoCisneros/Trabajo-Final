@@ -1,0 +1,20 @@
+<div class="m-2" *ngIf="form" [formGroup]="form">
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Código Microchip</mat-label>
+          <input type="text" matInput formControlName="codigoMicrochip">
+          <mat-error *ngIf="f['codigoMicrochip'].touched && f['codigoMicrochip'].invalid">
+            <mat-error *ngIf="f['codigoMicrochip'].errors?.['required']">El código de microchip es requerido</mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Fecha</mat-label>
+          <input matInput [value]="date | date:'longDate'" disabled>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  

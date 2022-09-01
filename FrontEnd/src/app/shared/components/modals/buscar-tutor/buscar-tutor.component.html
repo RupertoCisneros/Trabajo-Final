@@ -1,0 +1,27 @@
+<div class="container">
+    <h5>{{data.titulo}} </h5>
+    <div class="row g-3 p-3">
+      <div class="col-auto">
+        <form [formGroup]="form">
+          <mat-form-field class="example-full-width" appearance="legacy">
+            <mat-label>Ingrese la cedula: </mat-label>
+            <input type="text" matInput formControlName="cedula">
+            <mat-error *ngIf="f['cedula'].touched && f['cedula'].invalid">
+              <mat-error *ngIf="f['cedula'].errors?.['required']">El campo cédula es requerido</mat-error>
+              <mat-error *ngIf="f['cedula'].errors?.['cedulaError']">La cédula ingresada es incorrecta</mat-error>
+            </mat-error>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="col-auto">
+        <button mat-raised-button class="btn-samll botones" (click)="buscarCedula()">
+          <mat-icon>search</mat-icon> 
+          Buscar
+        </button>
+      </div>
+    </div>
+    <div mat-dialog-actions align="center">
+      <button mat-raised-button color="warn" [mat-dialog-close]>Cancelar</button>
+    </div>
+  </div>
+  

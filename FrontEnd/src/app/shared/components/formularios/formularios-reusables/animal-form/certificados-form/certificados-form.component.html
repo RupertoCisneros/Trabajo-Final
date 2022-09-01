@@ -1,0 +1,55 @@
+<div class="m-2" *ngIf="form" [formGroup]="form">
+    <mat-label>Certificado de vacunación /desparasitación</mat-label>
+    <mat-radio-group class="m-3" formControlName="certificadoVacunadoBoolean" aria-label="Selecciona una Opción">
+        <mat-radio-button labelPosition="before" color="primary" value="SI">SI</mat-radio-button>
+        <mat-radio-button labelPosition="before" color="primary" value="NO">NO</mat-radio-button>
+    </mat-radio-group>
+    <ng-container *ngIf="mostrarVanucado">
+        <app-multiplos-archivos-form formControlName="certificadoVacunado" [required]="mostrarVanucado" [formatos]="formatos" [size]="500000"
+            [max]="1" (envioArray)="recibirCertificadoVacunado($event)"></app-multiplos-archivos-form>
+    </ng-container>
+    <hr>
+    <mat-label>Certificado de esterilización</mat-label>
+    <mat-radio-group class="m-3" formControlName="certificadoEsterilizadoBoolean" aria-label="Selecciona una Opción">
+        <mat-radio-button labelPosition="before" color="primary" value="SI">SI</mat-radio-button>
+        <mat-radio-button labelPosition="before" color="primary" value="NO">NO</mat-radio-button>
+    </mat-radio-group>
+    <ng-container *ngIf="mostrarEsterilizado">
+        <app-multiplos-archivos-form formControlName="certificadoEsterilizado" [required]="mostrarEsterilizado" [formatos]="formatos" [size]="500000"
+            [max]="1" (envioArray)="recibirCertificadoEsterilizado($event)"></app-multiplos-archivos-form>
+    </ng-container>
+    <hr>
+    Fallecimiento
+    <div class="row">
+        <div class="col-6">
+            <mat-form-field class="example-full-width" color="primary" appearance="legacy">
+                <mat-label>Fecha de Fallecimiento (opcional)</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="fallecimiento" [min]="minDate"
+                    [max]="maxDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker color="primary"></mat-datepicker>
+                <mat-error *ngIf="f['fallecimiento'].touched && f['fallecimiento'].invalid">
+                    <mat-error *ngIf="f['fallecimiento'].errors?.['required']">El campo fecha de nacimiento es requerido
+                    </mat-error>
+                    <mat-error *ngIf="f['fallecimiento'].errors?.['LessThanToday']">El campo fecha de nacimiento es
+                        incorrecto</mat-error>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-6">
+            <mat-form-field *ngIf="this.f['fallecimiento'].value" class="example-full-width" appearance="legacy">
+                <mat-label>Motivo de Fallecimiento (opcional)</mat-label>
+                <mat-select formControlName="motivoFallecimiento">
+                    <mat-option *ngFor="let item of motivosFallecimientos" [value]="item.tipoCatalogoId">
+                        {{item.nombre}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="f['motivoFallecimiento'].touched && f['motivoFallecimiento'].invalid">
+                    <mat-error *ngIf="f['motivoFallecimiento'].errors?.['required']">El campo motivo de fallecimiento es
+                        requerido
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+</div>

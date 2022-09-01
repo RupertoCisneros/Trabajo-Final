@@ -1,0 +1,36 @@
+<mat-horizontal-stepper [linear]="true" #stepperAnimal>
+    <mat-step [stepControl]="datosGenerales">
+        <ng-template matStepLabel>Datos Generales</ng-template>
+        <form [formGroup]="datosGenerales">
+            <app-datos-generales-form formControlName="datosGenerales"></app-datos-generales-form>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="caracteristicas" >
+        <ng-template matStepLabel>Características</ng-template>
+        <form [formGroup]="caracteristicas">
+            <app-caracteristicas-form formControlName="caracteristicas"></app-caracteristicas-form>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="permanenciaAnimal">
+        <ng-template matStepLabel>Permanencia del animal</ng-template>
+        <form [formGroup]="permanenciaAnimal">
+            <app-permanencia-animal-form formControlName="permanenciaAnimal"></app-permanencia-animal-form>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="salud">
+        <ng-template matStepLabel>Salud</ng-template>
+        <form [formGroup]="salud">
+            <app-salud-form formControlName="salud"></app-salud-form>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="certificados">
+        <ng-template matStepLabel>Certificados de salud</ng-template>
+        <form [formGroup]="certificados">
+            <app-certificados-form formControlName="certificados"></app-certificados-form>
+        </form>
+        <div class="text-center">
+            <button mat-raised-button class="m-2 botones" matStepperPrevious>Regresar</button>
+            <button mat-raised-button *ngIf="animalService.tutor" class="botones" matStepperNext [disabled]="!form.valid" (click)="submitForm()">Siguiente</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>

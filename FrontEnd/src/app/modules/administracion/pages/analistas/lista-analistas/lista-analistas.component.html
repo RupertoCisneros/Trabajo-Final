@@ -1,0 +1,36 @@
+<div class="p-3 table-responsive mat-elevation-z8">
+  <mat-form-field appearance="standard">
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="buscar..." #input>
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="identificacion">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Identificación </th>
+      <td mat-cell *matCellDef="let element" class="text-center"> {{element.nroIdentificacion}} </td>
+    </ng-container>
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Analista </th>
+      <td mat-cell *matCellDef="let element" class="text-center"> {{element.denominacion}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Acciones">
+          <th mat-header-cell *matHeaderCellDef class="text-center"> Acciones </th>
+          <td mat-cell *matCellDef="let element" class="text-center">
+            <button mat-stroked-button (click)="Reasignar(element)"
+              class="m-1 botones">Reasignar</button>
+          </td>
+        </ng-container>
+    <ng-container matColumnDef="documentos">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Documentos Pendientes </th>
+      <td mat-cell *matCellDef="let element" class="text-center">
+        <p>{{element.nroRegistrosPendientes}} documento(s) pendiente(s)</p>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No se ha encontrado "{{input.value}}"</td>
+    </tr>
+  </table>
+</div>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+</mat-paginator>

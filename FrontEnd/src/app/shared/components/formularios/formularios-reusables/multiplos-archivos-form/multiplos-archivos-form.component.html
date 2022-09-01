@@ -1,0 +1,13 @@
+<div class="m-2 text-right" [formGroup]="form">
+    <p class="text-secondary">Tamaño de máximo de archivos: {{max}}</p>
+    <div class="form-group">
+        <input 
+            type="file" 
+            multiple
+            class="form-control"
+            (change)="onFileChange($event)">
+        <div *ngIf="f['files'].touched && f['files'].invalid" class="alert alert-danger">
+            <div *ngIf="f['files'].errors && f['files'].errors['required']">El campo es requerido.</div>
+        </div>
+    </div>
+</div>

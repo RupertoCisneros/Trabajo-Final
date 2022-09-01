@@ -1,0 +1,9 @@
+<div class="m-2" *ngIf="form" [formGroup]="form">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Observación</mat-label>
+        <textarea matInput placeholder="Ingrese la observación..." formControlName="observacion"></textarea>
+        <mat-error *ngIf="f['observacion'].touched && f['observacion'].invalid">
+            <mat-error *ngIf="f['observacion'].errors?.['required']">La observación es requerido</mat-error>
+        </mat-error>
+    </mat-form-field>
+</div>

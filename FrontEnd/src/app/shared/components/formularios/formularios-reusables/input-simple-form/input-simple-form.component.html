@@ -1,0 +1,10 @@
+<div class="m-2" *ngIf="form" [formGroup]="form">
+    <mat-form-field class="example-full-width" appearance="legacy">
+        <mat-label>{{datos.titulo}}</mat-label>   
+        <input type="text" matInput formControlName="data">
+        <mat-error *ngIf="f['data'].touched && f['data'].invalid">
+            <mat-error *ngIf="f['data'].errors?.['required']">El campo {{datos.titulo}} es requerido
+            </mat-error>
+        </mat-error>
+    </mat-form-field>
+</div>

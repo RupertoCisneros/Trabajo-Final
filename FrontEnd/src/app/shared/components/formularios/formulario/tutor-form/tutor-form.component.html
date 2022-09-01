@@ -1,0 +1,10 @@
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+    <app-nacionalidad-form formControlName="nacionalidad"></app-nacionalidad-form>
+    <app-fecha-nacimiento-form formControlName="nacimiento"></app-fecha-nacimiento-form>
+    <app-direccion-basic-form formControlName="direccion"></app-direccion-basic-form>
+    <app-telefono-form formControlName="telefono"></app-telefono-form>
+    <div class="text-center">
+      <button mat-raised-button class="botones m-2" matStepperPrevious>Regresar</button>
+      <button mat-raised-button class="botones" matStepperNext [disabled]="!form.valid">Siguiente</button>
+    </div>
+</form>

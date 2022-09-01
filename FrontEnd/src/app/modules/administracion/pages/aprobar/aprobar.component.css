@@ -1,0 +1,11 @@
+table {
+  width: 100%;
+}
+
+.table-header {
+  width: 100%;
+}
+
+.mat-column-Acciones {
+  width: 15% !important;
+}

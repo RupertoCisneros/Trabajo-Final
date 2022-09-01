@@ -1,0 +1,7 @@
+<div class="m-2" [formGroup]="form">
+    <mat-label class="m-3">Informacion Considerada</mat-label>
+    <mat-radio-group formControlName="informacionConsiderada" [ngModel]="'NO'" aria-label="Selecciona una Opción">
+        <mat-radio-button labelPosition="before" color="primary" value="SI">Si</mat-radio-button>
+        <mat-radio-button  labelPosition="before" color="primary" value="NO">No</mat-radio-button>
+    </mat-radio-group>
+</div>

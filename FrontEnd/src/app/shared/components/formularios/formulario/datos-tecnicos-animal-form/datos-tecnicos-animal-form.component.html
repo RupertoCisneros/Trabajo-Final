@@ -1,0 +1,63 @@
+<mat-card>
+    <mat-card-title>
+        <h2>Datos técnicos Animal de compañía</h2>
+        <hr>
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="submitForm()">
+            <p><strong>Características</strong></p>
+            <div class="row">
+                <div class="col-6">
+                    <app-input-simple-form [datos]="{titulo: 'Número de Microchip'}" formControlName="numeroMicrochip">
+                    </app-input-simple-form>
+                </div>
+                <div class="col-6">
+                    <app-input-simple-form [datos]="{titulo: 'Nombre del Animal'}" formControlName="nombreAnimal">
+                    </app-input-simple-form>
+                </div>
+                <div class="col-6">
+                    <p>Identificación fotográfica a color</p>
+                    <app-multiplos-archivos-form [formatos]="['jpg','bmp','tiff']" [size]="500000" [max]="1"
+                        (envioArray)="recibirFotografia($event)" formControlName="identificacionFotografica">
+                    </app-multiplos-archivos-form>
+                </div>
+                <div class="col-6">
+                    <p>Imagen identificación Visible</p>
+                    <app-multiplos-archivos-form [formatos]="['jpg','bmp','tiff']" [size]="500000" [max]="1"
+                        (envioArray)="recibirVisible($event)" formControlName="identificacionVisible">
+                    </app-multiplos-archivos-form>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-6">
+                    <app-datepicker-simple-form [datos]="{titulo: 'Fecha de Nacimiento'}" [minDate]="minDate"
+                        [maxDate]="maxDate" formControlName="nacimiento"></app-datepicker-simple-form>
+                </div>
+                <div class="col-6">
+                    <app-select-simple-form [datos]="{titulo: 'Tipo de Identificación'}"
+                        formControlName="tipoIdentificacion" [tipoCatalogo]="19"></app-select-simple-form>
+                </div>
+                <div class="col-6">
+                    <app-select-simple-form [datos]="{titulo: 'Atención Realizada'}" formControlName="atencionRealizada"
+                        [tipoCatalogo]="39"></app-select-simple-form>
+                </div>
+                <div class="col-6">
+                    <app-select-simple-form [datos]="{titulo: 'Estado general del chequeo'}"
+                        formControlName="estadoChequeo" [tipoCatalogo]="40"></app-select-simple-form>
+                </div>
+            </div>
+            <hr>
+            <app-multiple-select-form [datos]="{titulo: 'Enfermedades detectadas', subTitulo: 'Enfermedades'}"
+                [tipoCatalogo]="29" formControlName="enfermedades"></app-multiple-select-form>
+            <hr>
+            <app-textarea-simple-form [datos]="{titulo: 'Observaciones'}" formControlName="observaciones">
+            </app-textarea-simple-form>
+            <hr>
+            <div class="text-center">
+                <button mat-raised-button color="warn" class="m-2" (click)="cancelarForm()">Cancelar</button>
+                <button mat-raised-button class="botones" [disabled]="!form.valid"><mat-icon>save</mat-icon> Guardar</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

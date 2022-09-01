@@ -1,0 +1,62 @@
+<mat-card>
+  <mat-card-title><h2>Registro del retiro de Animales de compañía</h2><hr></mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <p> <strong>Ubicación de retiro</strong></p>
+      <hr>
+      <div class="row">
+        <div class="col-6">
+          <app-select-simple-form [datos]="{titulo: 'Administración Zonal'}" [tipoCatalogo]="3"
+            formControlName="administracionZonal"></app-select-simple-form>
+        </div>
+      </div>
+      <app-direccion-form formControlName="direccionRetiro"></app-direccion-form>
+      <hr>
+      <p> <strong>Motivo de la intervención</strong></p>
+      <hr>
+      <div class="row">
+        <div class="col-6">
+          <app-select-simple-form [datos]="{titulo: 'Motivo de retiro'}" [tipoCatalogo]="25" formControlName="motivoRetiro">
+          </app-select-simple-form>
+        </div>
+        <div class="col-6">
+          <app-multiplos-archivos-form [formatos]="['pdf']" [size]="500000" [max]="1"
+            (envioArray)="recibirDocumento($event)" formControlName="motivoFile"></app-multiplos-archivos-form>
+        </div>
+      </div>
+      <app-input-simple-form [datos]="{titulo: 'Descripcion motivo de retiro'}" formControlName="motivoDescripcion">
+      </app-input-simple-form>
+      <hr>
+      <p> <strong>Tutoría</strong></p>
+      <hr>
+      <mat-label>Estado de la tutoría</mat-label>
+      <mat-radio-group class="m-3" formControlName="estadoTutoriaId" [ngModel]="247" aria-label="Selecciona una Opción">
+        <mat-radio-button *ngFor="let item of estadosTutorias" color="primary" labelPosition="before"
+          [value]="item.tipoCatalogoId">{{item.nombre}}</mat-radio-button>
+      </mat-radio-group>
+      <div class="py-3">
+        <mat-label>Tutor en condición de calle</mat-label>
+      <mat-radio-group class="m-3" formControlName="condicionCalle" aria-label="Selecciona una Opción">
+        <mat-radio-button labelPosition="before" color="primary" value="SI">SI</mat-radio-button>
+        <mat-radio-button labelPosition="before" color="primary" value="NO">NO</mat-radio-button>
+      </mat-radio-group>
+      </div>
+      <app-textarea-simple-form  [datos]="{titulo: 'Observación Tutor'}" formControlName="observaciónTutor"></app-textarea-simple-form>
+      <div class="row">
+        <div class="col-6">
+          <app-select-simple-form [datos]="{titulo: 'Situación de Intervención'}" [tipoCatalogo]="20"
+            formControlName="situacionIntervencion"></app-select-simple-form>
+        </div>
+        <div class="col-6">
+          <app-input-simple-form *ngIf="observacion" formControlName="observacionIntervencion" [datos]="{titulo: 'Observación situación de intervención'}"></app-input-simple-form>
+        </div>
+      </div>
+
+      <hr>
+      <div class="text-center">
+        <button mat-raised-button color="warn" class="m-2" (click)="cancelarForm()">Cancelar</button>
+        <button mat-raised-button class="botones" [disabled]="!form.valid"><mat-icon>save</mat-icon> Guardar</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

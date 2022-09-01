@@ -1,0 +1,94 @@
+<ng-container *ngIf="visualizar && tipoDeRegistro.subtipoRegistroId != 26">
+    <mat-card class="m-3">
+        <mat-card-title>
+            Visualización de {{tipoDeRegistro.descripcion}}
+        </mat-card-title>
+        <mat-card-content class="m-3">
+            <div class="row">
+                <div class="col-6">
+                    <ng-container *ngIf="visualizar.direccion">
+                        <p *ngIf="visualizar.direccion.direccion"> <strong>Dirección:</strong>
+                            {{visualizar.direccion.direccion}}</p>
+                        <div *ngIf="visualizar.direccion.nombreParroquia">
+                            <p class="text-primary"> <strong>Dirección de Domicilio</strong></p>
+                            <div class="m-2">
+                                <p *ngIf="visualizar.direccion.principal"> <strong>Calle Principal:</strong>
+                                    {{visualizar.direccion.principal}}</p>
+                                <p *ngIf="visualizar.direccion.secundaria"> <strong>Calle Secundaria:</strong>
+                                    {{visualizar.direccion.secundaria}}</p>
+                                <p *ngIf="visualizar.direccion.barrio"> <strong>Barrio:</strong>
+                                    {{visualizar.direccion.barrio}}
+                                </p>
+                                <p *ngIf="visualizar.direccion.nomenclatura"> <strong>Nomenclatura:</strong>
+                                    {{visualizar.direccion.nomenclatura}}</p>
+                                <p *ngIf="visualizar.direccion.nombreParroquia"> <strong>Parroquia:</strong>
+                                    {{visualizar.direccion.nombreParroquia}}</p>
+                                <p *ngIf="visualizar.direccion.otros"> <strong>Otros:</strong>
+                                    {{visualizar.direccion.otros}}
+                                </p>
+                                <p *ngIf="visualizar.direccion.referencia"> <strong>Referencia:</strong>
+                                    {{visualizar.direccion.referencia}}</p>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="col-6">
+                    <p *ngIf="visualizar.nacionalidad"> <strong>País de Origen:</strong>
+                        {{visualizar.nacionalidad.nombrePais}}</p>
+                    <ng-container *ngIf="visualizar.nacimiento">
+                        <p> <strong>Discapacidad:</strong> {{visualizar.nacimiento.discapacidad}}</p>
+                        <p> <strong>Fecha de nacimiento:</strong> {{visualizar.nacimiento.nacimiento | date:'longDate'}}
+                        </p>
+                    </ng-container>
+                    <ng-container *ngIf="visualizar.telefono">
+                        <p> <strong>Teléfono:</strong> {{visualizar.telefono.telefono}}</p>
+                        <p> <strong>Celular:</strong> {{visualizar.telefono.movil}}</p>
+                    </ng-container>
+
+                </div>
+                <div class="col-6">
+                    <div *ngIf="visualizar.tutor">
+                        <h5 class="text-primary"> <strong>Datos del tutor</strong></h5>
+                        <div class="m-2">
+                            <p *ngIf="visualizar.tutor.denominacion"> <strong>Apellidos y Nombres: </strong>
+                                {{visualizar.tutor.denominacion}}</p>
+                            <p *ngIf="visualizar.tutor.direccion"> <strong>Dirección: </strong>
+                                {{visualizar.tutor.direccion}}</p>
+                            <p *ngIf="visualizar.tutor.email"> <strong>Correo electrónico:</strong>
+                                {{visualizar.tutor.email}}
+                            </p>
+                            <p *ngIf="visualizar.tutor.movil"> <strong>Móvil:</strong>
+                                {{visualizar.tutor.movil}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div
+                        *ngIf="visualizar.establecimiento && visualizar.informacionConsiderada && visualizar.microchip">
+                        <h5 class="text-primary"> <strong>Información del Microchip</strong></h5>
+                        <div class="m-2">
+                            <p *ngIf="visualizar.establecimiento.establecimientoNombre"> <strong>Establecimiento:
+                                </strong>
+                                {{visualizar.establecimiento.establecimientoNombre}}</p>
+                            <p *ngIf="visualizar.microchip.codigoMicrochip"> <strong>Código Microchip: </strong>
+                                {{visualizar.microchip.codigoMicrochip}}</p>
+                            <p *ngIf="visualizar.informacionConsiderada.informacionConsiderada"> <strong>Información
+                                    Considerada: </strong>
+                                {{visualizar.informacionConsiderada.informacionConsiderada}}
+                            </p>
+                            <p *ngIf="visualizar.observacion.observacion"> <strong>Observación: </strong>
+                                {{visualizar.observacion.observacion}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </mat-card-content>
+    </mat-card>
+
+</ng-container>

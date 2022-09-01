@@ -1,0 +1,31 @@
+<div class="m-2" *ngIf="form" [formGroup]="form">
+  <p class="text-primary font-weight-bold">Teléfonos</p>
+  <div class="row">
+    <div class="col-6">
+      <mat-form-field class="example-full-width" appearance="legacy">
+        <mat-label>Convencional</mat-label>
+        <input type="text" matInput formControlName="telefono" [ngModel]="persona.telefono">
+        <mat-icon matSuffix>phone</mat-icon>
+        <mat-error *ngIf="f['telefono'].touched && f['telefono'].invalid">
+          <mat-error *ngIf="f['telefono'].errors?.['required']">El teléfono es requerido</mat-error>
+          <mat-error *ngIf="f['telefono'].errors?.['pattern']">El campo teléfono tiene máximo 9 caracteres</mat-error>
+          <mat-error *ngIf="f['telefono'].errors?.['soloNumeros']">El campo teléfono debe contener solo números
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="example-full-width" appearance="legacy">
+        <mat-label>Móvil</mat-label>
+        <input type="text" matInput formControlName="movil" [ngModel]="persona.movil">
+        <!-- [ngModel]="1231231231" -->
+        <mat-icon matSuffix>phone_android</mat-icon>
+        <mat-error *ngIf="f['movil'].touched && f['movil'].invalid" >
+          <mat-error *ngIf="f['movil'].errors?.['required']">El número celular es requerido</mat-error>
+          <mat-error *ngIf="f['movil'].errors?.['pattern']">El campo celular tiene máximo 10 caracteres</mat-error>
+          <mat-error *ngIf="f['movil'].errors?.['soloNumeros']">El campo celular debe contener solo números</mat-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+</div>

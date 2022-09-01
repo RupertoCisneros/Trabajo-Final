@@ -1,0 +1,43 @@
+<app-datos-personales-form></app-datos-personales-form>
+<div class="py-2 mat-elevation-z8">
+  <mat-horizontal-stepper class="p-2" [linear]="true" #stepper>
+    <mat-step [completed]="completadoPrimer">
+      <ng-template matStepLabel>Registro Remetfu</ng-template>
+      <button mat-raised-button class="iconbutton botones" (click)="obtener()">
+        <mat-icon>add_circle_outline</mat-icon> Añadir Trámite
+      </button>
+      <hr class="m-2">
+      <app-mis-tramites (tipoRegistro)="editarRegistro($event)"></app-mis-tramites>
+    </mat-step>
+    <mat-step [completed]="completadoSegundo">
+      <ng-template *ngIf="!tipodeRegistro" matStepLabel>Formulario</ng-template>
+      <button mat-raised-button class="m-2 botones" matStepperPrevious>
+        <mat-icon>keyboard_backspace</mat-icon> Regresar
+      </button>
+      <hr>
+      <ng-template *ngIf="tipodeRegistro" matStepLabel>{{tipodeRegistro.descripcion || 'Formulario'}}</ng-template>
+      <ng-container *ngIf="tipodeRegistro">
+        <app-formulario [tipoRegistro]="tipodeRegistro"
+          [datos]="{editable: editarFormulario,registro:tipodeRegistro.registroProfesionalId}"
+          (formularioSend)="obtenerForm($event)"></app-formulario>
+      </ng-container>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Confirmación</ng-template>
+      <ng-container *ngIf="tipodeRegistro">
+        <app-visualizacion [visualizar]="formulario" [tipoDeRegistro]="tipodeRegistro"></app-visualizacion>
+        <app-tabla-senescyt *ngIf="tipodeRegistro.tipoFormulario === 2" (sinConexion)="validarSinConexion($event)"
+          (envioTitulo)="obtenerTituloSENESCYT($event)" [tipoRegistro]="tipodeRegistro"></app-tabla-senescyt>
+      </ng-container>
+      <hr class="m-3">
+      <div class="text-center">
+        <button mat-raised-button color="warn" (click)="cancelarForm()">Cancelar</button>
+        <button mat-raised-button class="m-2 botones" matStepperPrevious>Regresar</button>
+        <button mat-raised-button class="botones" (click)="registrarRegistro()"
+          [class.spinner]="this.loadingService.loading" [disabled]="loading">
+          <mat-icon>save</mat-icon> Guardar
+        </button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

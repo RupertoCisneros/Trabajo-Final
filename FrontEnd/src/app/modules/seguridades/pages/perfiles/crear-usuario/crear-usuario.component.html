@@ -1,0 +1,50 @@
+<div class="mat-elevation-z8 m-3">
+  <form class="example-form p-3">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="legacy">
+            <mat-label>Nombres y Apellidos</mat-label>
+            <input matInput [ngModel]="usuarioForm.nombreCompleto" [disabled]="disabled"
+              [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="legacy">
+            <mat-label>Identificación</mat-label>
+            <input type="text" matInput [disabled]="true" [ngModel]="usuarioForm.identificacion"
+              [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <p>
+      <mat-form-field class="example-full-width" appearance="legacy">
+        <mat-label>Email</mat-label>
+        <input type="email" [disabled]="true" matInput [ngModel]="usuarioForm.email"
+          [ngModelOptions]="{standalone: true}">
+        <mat-icon matSuffix>mail_outline</mat-icon>
+      </mat-form-field>
+
+      <ng-container [formGroup]="form">
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Perfiles</mat-label>
+          <mat-select formControlName="perfiles">
+            <mat-option *ngFor="let perfil of perfiles" [value]="perfil.perfilId">
+              {{perfil.nombre}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="f['perfiles'].errors?.['required']">El campo perfiles es requerido</mat-error>
+        </mat-form-field>
+      </ng-container>
+  </form>
+  <div class="text-center">
+    <button mat-raised-button (click)="onSubmit()" [class.spinner]="loading" [disabled]="form.invalid || loading"
+      class="botones m-2">
+      <mat-icon>save</mat-icon>
+      Guardar
+    </button>
+    <button mat-raised-button class="" color="warn" (click)="onReset()">Cancelar</button>
+  </div>
+
+</div>

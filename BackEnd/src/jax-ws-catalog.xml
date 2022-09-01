@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://172.22.8.108/MDMQ_WS_PERSONAS2012/Presentacion/PersonaSQL.asmx" uri="wsdl/172.22.8.108/MDMQ_WS_PERSONAS2012/Presentacion/PersonaSQL.asmx"/>
+    <system systemId="http://172.22.8.108/MDMQ_WS_PERSONAS2012/Presentacion/PersonaSQL.asmx?WSDL" uri="wsdl/172.22.8.108/MDMQ_WS_PERSONAS2012/Presentacion/PersonaSQL.asmx.wsdl"/>
+    <system systemId="https://interoperabilidad.dinardap.gob.ec/interoperador-v2?wsdl" uri="wsdl/interoperabilidad.dinardap.gob.ec/interoperador-v2.wsdl"/>
+    <system systemId="http://172.22.8.108/MDMQ_WS_PERSONAS2012/Presentacion/PersonaSQL.asmx?wsdl" uri="wsdl/172.22.8.108/MDMQ_WS_PERSONAS2012/Presentacion/PersonaSQL.asmx.wsdl"/>
+    <system systemId="http://172.22.8.108/MDMQ_SAO_CoreTributario/ConsultaSAOService.svc?wsdl" uri="wsdl/172.22.8.108/MDMQ_SAO_CoreTributario/ConsultaSAOService.svc.wsdl"/>
+    <system systemId="http://172.22.8.108/MDMQ_SAO_CoreTributario/ConsultaSAOService.svc?xsd=xsd0" uri="wsdl/172.22.8.108/MDMQ_SAO_CoreTributario/ConsultaSAOService.svc.xsd_xsd0.xsd"/>
+    <system systemId="http://172.22.8.108/MDMQ_SAO_CoreTributario/ConsultaSAOService.svc?xsd=xsd1" uri="wsdl/172.22.8.108/MDMQ_SAO_CoreTributario/ConsultaSAOService.svc.xsd_xsd1.xsd"/>
+    <system systemId="http://172.22.8.108/MDMQ_SAO_CoreTributario/ConsultaSAOService.svc?xsd=xsd2" uri="wsdl/172.22.8.108/MDMQ_SAO_CoreTributario/ConsultaSAOService.svc.xsd_xsd2.xsd"/>
+    <system systemId="http://172.22.8.108/MDMQ_SAO_CoreTributario/ConsultaSAOService.svc?xsd=xsd3" uri="wsdl/172.22.8.108/MDMQ_SAO_CoreTributario/ConsultaSAOService.svc.xsd_xsd3.xsd"/>
+    <system systemId="http://172.22.4.130/MDMQIdentificacionDocumental/DocumentalService.svc?wsdl" uri="wsdl/172.22.4.130/MDMQIdentificacionDocumental/DocumentalService.svc.wsdl"/>
+    <system systemId="http://172.22.4.130/MDMQIdentificacionDocumental/DocumentalService.svc?xsd=xsd0" uri="wsdl/172.22.4.130/MDMQIdentificacionDocumental/DocumentalService.svc.xsd_xsd0.xsd"/>
+    <system systemId="http://172.22.4.130/MDMQIdentificacionDocumental/DocumentalService.svc?xsd=xsd1" uri="wsdl/172.22.4.130/MDMQIdentificacionDocumental/DocumentalService.svc.xsd_xsd1.xsd"/>
+    <system systemId="http://172.22.4.130/MDMQIdentificacionDocumental/DocumentalService.svc?xsd=xsd2" uri="wsdl/172.22.4.130/MDMQIdentificacionDocumental/DocumentalService.svc.xsd_xsd2.xsd"/>
+    <system systemId="http://172.22.4.130/MDMQIdentificacionDocumental/DocumentalService.svc?xsd=xsd3" uri="wsdl/172.22.4.130/MDMQIdentificacionDocumental/DocumentalService.svc.xsd_xsd3.xsd"/>
+    <system systemId="http://172.16.20.35/ServicioSAOOriginal/ServiceSAO_ORDEN_PAGO.svc?wsdl" uri="wsdl/172.16.20.35/ServicioSAOOriginal/ServiceSAO_ORDEN_PAGO.svc.wsdl"/>
+    <system systemId="http://172.16.20.35/ServicioSAOOriginal/ServiceSAO_ORDEN_PAGO.svc?xsd=xsd0" uri="wsdl/172.16.20.35/ServicioSAOOriginal/ServiceSAO_ORDEN_PAGO.svc.xsd_xsd0.xsd"/>
+    <system systemId="http://172.16.20.35/ServicioSAOOriginal/ServiceSAO_ORDEN_PAGO.svc?xsd=xsd1" uri="wsdl/172.16.20.35/ServicioSAOOriginal/ServiceSAO_ORDEN_PAGO.svc.xsd_xsd1.xsd"/>
+    <system systemId="http://172.16.20.35/ServicioSAOOriginal/ServiceSAO_ORDEN_PAGO.svc?xsd=xsd2" uri="wsdl/172.16.20.35/ServicioSAOOriginal/ServiceSAO_ORDEN_PAGO.svc.xsd_xsd2.xsd"/>
+    <system systemId="http://172.16.20.35/ServicioSAOOriginal/ServiceSAO_ORDEN_PAGO.svc?xsd=xsd3" uri="wsdl/172.16.20.35/ServicioSAOOriginal/ServiceSAO_ORDEN_PAGO.svc.xsd_xsd3.xsd"/>
+</catalog>

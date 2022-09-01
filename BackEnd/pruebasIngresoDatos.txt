@@ -1,0 +1,271 @@
+Pruebas de Usuarios
+-------------------
+{
+  "tipoIdentificacion": "C",
+  "nroIdentificacion": "1711760528",
+  "denominacion": "MARCO CADENA",
+  "mail": "marcocj123@gmail.com",
+  "direccion": "prueba prueba",
+  "telefono": "2222200",
+  "estado": "ACT",
+  "cim": "123456",
+  "usuarioCreacion": "zzz",
+  "terminalCreacion": "172",
+  "fechaCreacion": "2022-03-28T14:59:17.696Z",
+  "usuarioModificacion": "zzzz",
+  "terminalModificacion": "168",
+  "fechaModificacion": "2022-03-28T14:59:17.696Z"
+}
+
+{
+    "aceptacionMedios": "SI",
+    "cim": "cadena",
+    "denominacion": "cadena",
+    "direccion": "Sucre",
+    "estado": "ACT",
+    "fechaCreacion": "2022-04-04T19:22:57.391Z",
+    "fechaModificacion": "2022-04-04T19:22:57.391Z",
+    "mail": "cadena",
+    "nroIdentificacion": "cadena",
+    "remRegistroProfesionalSet": [
+        null
+    ],
+    "telefono": "cadena",
+    "terminalCreacion": "cadena",
+    "terminalModificacion": "cadena",
+    "tipoIdentificacion": "C",
+  "usuarioCreacion": "DFGDFG",
+  "usuarioModificacion": "DFGFDGDF"
+  "usuarioId": 1
+}
+
+{
+  "tipoIdentificacion": "C",
+  "nroIdentificacion": "1711760533",
+  "denominacion": "MARCO LOPES",
+  "mail": "marcocj123@gmail.com",
+  "direccion": "prueba1234",
+  "telefono": "2222200",
+  "estado": "ACT",
+  "cim": "123456",
+  "usuarioCreacion": "zzz123",
+  "terminalCreacion": "172",
+  "fechaCreacion": "2022-03-28T14:59:17.696Z",
+  "usuarioModificacion": "zzzz",
+  "terminalModificacion": "168",
+  "fechaModificacion": "2022-03-28T14:59:17.696Z",
+  "usuarioId": 3 
+}
+
+ids for this class must be manually assigned before calling save(): gob.mdmq.remetfu.entidades.RemUsuarios
+
+Pruebas de Veterinarios
+-----------------------
+{
+  "fechaNacimiento": "1980-03-28",
+  "discapacidad": "NO",
+  "telefono": "0324534829",
+  "movil": "1234569870",
+  "nacionalidad": [
+   {
+   "catalogoId":  6,
+   "nombre": "ECUATORIANA",
+   "registro": "Null",
+   "estado": "ACT",
+   "usuarioCreacion": "zzz123",
+   "terminalCreacion": "172",
+   "fechaCreacion": "2022-03-28T14:59:17.696Z",
+   "usuarioModificacion": "zzzz",
+   "terminalModificacion": "168",
+   "fechaModificacion": "2022-03-28T14:59:17.696Z"
+   }
+   ], 
+  "pathVisatrabajo": "",
+  "parroquia": 1 ,
+  "tipoRegistro": 226 ,
+  "barrio": "El dorado",
+  "callePrincipal": "Sucre",
+  "calleNumero": "s/n",
+  "calleSecundaria": "Maldonado",
+  "calleReferencia1": "Junto al parque",
+  "calleReferencia2": "Parada de Buses",
+  "estado": "ACT",
+  "agremiado": "NO",
+  "nombreGremio": "",
+  "fechaInactivo": "2022-03-28",
+  "diasInactivo": 0,
+  "usuarioCreacion": "zzz123",
+  "terminalCreacion": "172",
+  "fechaCreacion": "2022-03-28T14:59:17.696Z",
+  "usuarioModificacion": "zzzz",
+  "terminalModificacion": "168",
+  "fechaModificacion": "2022-03-28T14:59:17.696Z"
+  }
+
+curl -X POST "http://localhost:8080/url" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"usuarioId\": 1, \"fechaNacimiento\": \"1980-03-28\", \"discapacidad\": \"NO\", \"telefono\": \"0324534829\", \"movil\": \"1234569870\", \"nacionalidad\" : 7, \"pathVisatrabajo\": \"C:\\\\VISAS1010\", \"parroquia\": 1 , \"barrio\": \"El dorado\", \"callePrincipal\": \"Sucre\", \"calleNumero\": \"s/n\", \"calleSecundaria\": \"Maldonado\", \"calleReferencia1\": \"Junto al parque\", \"calleReferencia2\": \"Parada de Buses\", \"estado\": \"ACT\", \"agremiado\": \"NO\", \"nombreGremio\": \"\", \"fechaInactivo\": \"2022-03-28\", \"diasInactivo\": 0, \"usuarioCreacion\": \"3X\", \"terminalCreacion\": \"172\", \"fechaCreacion\": \"2022-03-28T14:59:17.696Z\", \"usuarioModificacion\": \"XXX\", \"terminalModificacion\": \"168\", \"fechaModificacion\": \"2022-03-28T14:59:17.696Z\", \"veterinarioId\":2 }"
+
+
+{
+  "agremiado": "NO",
+  "barrio": "La comuna",
+  "calleNumero": "NE17-04",
+  "callePrincipal": "Pinzon",
+  "calleReferencia1": "Junto al Estadio",
+  "calleReferencia2": "Estado Renacer",
+  "calleSecundaria": "Robles",
+  "diasInactivo": 0,
+  "discapacidad": "NO",
+  "estado": "ACT",
+  "fechaCreacion": "2022-03-31T20:51:52.085Z",
+  "fechaInactivo": "2022-03-31T20:51:52.085Z",
+  "fechaModificacion": "2022-03-31T20:51:52.085Z",
+  "fechaNacimiento": "1998-03-31T20:51:52.085Z",
+  "movil": "0995425897",
+   "nombreGremio": "",
+   "pathVisatrabajo": "C:\\VISAS",
+  "telefono": "0327589336",
+  "terminalCreacion": "Prueba",
+  "terminalModificacion": "Prueba",
+   "usuarioCreacion": "usuario",
+  "usuarioModificacion": "usuario",
+"secuencialTmp": 1,
+"secuencialFinal": 0,
+"acuerdoResponsabilidad": "SI"
+}
+
+  SELECT 'ESPECIALISTAS',USU.DENOMINACION,USU.NRO_IDENTIFICACION,USU.CIM,*
+  FROM [MDMQ_REMETFU].[Remetfu].[REM_REGISTRO_PROFESIONAL] RP
+  INNER JOIN [MDMQ_REMETFU].[Remetfu].REM_USUARIOS USU
+  ON RP.USUARIO_ID=USU.USUARIO_ID
+
+  select * from MDMQ_REMETFU.[Remetfu].[REM_REGISTRO_PROFESIONAL]
+
+  SELECT 'ANALISTAS',*
+  FROM [MDMQ_REMETFU].[Remetfu].[REM_USUARIO_PERFIL] RUP
+  INNER JOIN [MDMQ_REMETFU].[Remetfu].REM_USUARIOS USU
+  ON RUP.USUARIO_ID=USU.USUARIO_ID
+
+  SELECT *
+  FROM [MDMQ_REMETFU].[Remetfu].[REM_ANALISIS_TRAMITE_REGISTRO_PROFESIONAL]
+
+
+********Prueba de parametros******
+{
+ 
+  "usuarioCreacion": "zzz",
+  "terminalCreacion": "172",
+  "fechaCreacion": "2022-03-28T14:59:17.696Z",
+  "usuarioModificacion": "zzzz",
+  "terminalModificacion": "168",
+  "fechaModificacion": "2022-03-28T14:59:17.696Z"
+}
+
+************Prueba Catalogos **************************
+{
+  "tipo_catalogo_Id":"40",
+   "estado":"ACT",
+   "usuarioCreacion": "zzz",
+  "terminalCreacion": "172",
+  "fechaCreacion": "2022-03-28T14:59:17.696Z",
+  "usuarioModificacion": "zzzz",
+  "terminalModificacion": "168",
+  "fechaModificacion": "2022-03-28T14:59:17.696Z"
+}
+
+
+*********PRUEBA TIPO CATALOGO *****************
+{
+   "estado":"ACT",
+   "usuarioCreacion": "zzz",
+  "terminalCreacion": "172",
+  "fechaCreacion": "2022-03-28T14:59:17.696Z",
+  "usuarioModificacion": "zzzz",
+  "terminalModificacion": "168",
+  "fechaModificacion": "2022-03-28T14:59:17.696Z"
+}
+
+
+*********** MICROCHIP MASCOTA *********************
+
+{
+  "tutor_Id": "1",
+  "fecha_ingreso": "2022-03-28T14:59:17.696Z",
+  "informacion_considerada": "SI",
+  "establecimiento": "244",
+  "observacion": "Se ubica chip detras de oreja",
+  "acuerdo_responsabilidad": "SI",
+  "estado": "ACT",
+  "usuarioCreacion": "zzz123",
+  "terminalCreacion": "172",
+  "fechaCreacion": "2022-03-28T14:59:17.696Z",
+  "usuarioModificacion": "zzzz",
+  "terminalModificacion": "168",
+  "fechaModificacion": "2022-03-28T14:59:17.696Z"
+  }
+
+
+************** ANIMAL TUTOR ********************
+{
+"tutor_Id": "1",
+"comunitario": "SI",
+"estadoTutoria":"",
+"procedenciaAnimal":"",
+"tipoAnimal":"",
+"anexoVisible":"",
+"microChipMascotaId":"",
+"observacionMicrochip":"",
+"nombreAnimal":"",
+"fechaNacimiento":"",
+"especie":"",
+"raza":"",
+"sexo":"",
+"estadoReproductivo":"",
+"colorPredominante":"",
+"colorSecundario":"",
+"senialesParticulares":"",
+"identificacionFotografica1":"",
+"identificacionFotografica2":"",
+"identificacionVisible":"",
+"permanencia":"",
+"permanenciaOtros":"",
+"parroquia":"",
+"barrio":"",
+"callePrincipal":"",
+"calleNumero":"",
+"calleSecundaria":"",
+"calleReferencia1":"",
+"calleReferencia2":"",
+"tipoVivienda":"",
+"mt2Vivienda":"",
+"mt2Permanencia":,
+"cerramiento":"",
+"estatusVivienda":"",
+"estatusViviendaOtros":"",
+"enfermedadCatastrofica":"",
+"descripcionEnfermedad":"",
+"examenComportamental":"",
+"examenFisico":"",
+"certificadoVacunacion":"",
+"certificadoVacunacionArchivo":"",
+"certificadoEsterilizacion":"",
+"certificadoEsterilizacionArchivo":"",
+"fechaFallecimiento":"",
+"motivoFallecimiento""",
+"acuerdoResponsabilidad":"",
+"fechaRegistro":"",
+  "estado": "ACT",
+  "usuarioCreacion": "zzz123",
+  "terminalCreacion": "172",
+  "fechaCreacion": "2022-03-28T14:59:17.696Z",
+  "usuarioModificacion": "zzzz",
+  "terminalModificacion": "168",
+  "fechaModificacion": "2022-03-28T14:59:17.696Z"
+  }
+
+
+
+
+
+
+
+

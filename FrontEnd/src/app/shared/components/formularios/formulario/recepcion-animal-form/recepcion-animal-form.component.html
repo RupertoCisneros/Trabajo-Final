@@ -1,0 +1,66 @@
+<mat-card>
+  <mat-card-title><h2>Recepción de Animales de compañía</h2><hr></mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <div class="col-6">
+        <app-select-simple-form [datos]="{titulo: 'Agencia UBA (CAVRAT de ingreso)'}" [tipoCatalogo]="27"
+          formControlName="agenciaUBA"></app-select-simple-form>
+      </div>
+      <hr>
+      <p> <strong>Características</strong></p>
+      <hr>
+      <div class="row">
+        <div class="col-4">
+          <app-select-simple-form [datos]="{titulo: 'Especie'}" [tipoCatalogo]="14" formControlName="especie">
+          </app-select-simple-form>
+        </div>
+        <div class="col-4">
+          <app-select-simple-form [datos]="{titulo: 'Raza'}" [tipoCatalogo]="22" formControlName="raza">
+          </app-select-simple-form>
+        </div>
+        <div class="col-4">
+          <app-select-simple-form [datos]="{titulo: 'Sexo'}" [tipoCatalogo]="38" formControlName="sexo">
+          </app-select-simple-form>
+        </div>
+      </div>
+      <app-select-simple-form [datos]="{titulo: 'Estado Reproductivo'}" [tipoCatalogo]="17"
+        formControlName="estadoReproductivo"></app-select-simple-form>
+      <div class="row">
+        <div class="col-6">
+          <app-select-simple-form [datos]="{titulo: 'Color predominante'}" [tipoCatalogo]="23"
+            formControlName="colorPredominante"></app-select-simple-form>
+        </div>
+        <div class="col-6">
+          <app-select-simple-form [datos]="{titulo: 'Color secundario'}" [tipoCatalogo]="24"
+            formControlName="colorSecundario"></app-select-simple-form>
+        </div>
+      </div>
+      <hr>
+      <app-textarea-simple-form [datos]="{titulo: 'Señas particulares del animal'}" formControlName="seniasParticulares">
+      </app-textarea-simple-form>
+      <app-select-simple-form [datos]="{titulo: 'Proceso de ejecución'}" [tipoCatalogo]="21"
+        formControlName="procesoEjecucion"></app-select-simple-form>
+      <app-textarea-simple-form [datos]="{titulo: 'Descripción del proceso'}" formControlName="descripcionProceso">
+      </app-textarea-simple-form>
+      <hr>
+      <div class="py-3">
+        <mat-label>Realizado Examen de comportamiento</mat-label>
+        <mat-radio-group class="m-3" formControlName="examenComportamiento" aria-label="Selecciona una Opción">
+          <mat-radio-button labelPosition="before" color="primary" value="SI">SI</mat-radio-button>
+          <mat-radio-button labelPosition="before" color="primary" value="NO">NO</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <ng-container *ngIf="mostrarExamenClinico">
+        <app-select-simple-form [datos]="{titulo: 'Resultado Examen clínico comportamental'}" [tipoCatalogo]="18"
+          formControlName="examenClinicoComportamental"></app-select-simple-form>
+      </ng-container>
+    
+      <hr>
+      <div class="text-center">
+        <button mat-raised-button color="warn" class="m-2" (click)="cancelarForm()">Cancelar</button>
+        <button mat-raised-button class="botones" [disabled]="!form.valid"><mat-icon>save</mat-icon> Guardar</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+

@@ -1,0 +1,54 @@
+<h1 mat-dialog-title>Deshabilitar Analista </h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field class="example-full-width" appearance="legacy">
+      <mat-label>Seleccionar permiso:</mat-label>
+      <mat-select name="permiso" formControlName="permiso">
+        <mat-option *ngFor="let permiso of permisos" [value]="permiso">
+          {{permiso.descripcion}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="f['permiso'].errors?.['required']">El campo permiso es requerido</mat-error>
+    </mat-form-field>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Fecha Desde:</mat-label>
+          <input matInput formControlName="fechaDesde" [min]="minDate"  [matDatepicker]="desde">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="desde"></mat-datepicker-toggle>
+          <mat-datepicker #desde></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Fecha Hasta:</mat-label>
+          <input matInput formControlName="fechaHasta" [min]="minDate"  [matDatepicker]="hasta">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="hasta"></mat-datepicker-toggle>
+          <mat-datepicker #hasta></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div *ngIf="numeroDias" class="m-2">
+      <strong> Número de días: {{numeroDias}}</strong>
+      <p *ngIf="!errorDias" class="text-danger">No válido</p>
+    </div>
+    <mat-form-field class="example-full-width" appearance="legacy">
+      <mat-label>Observación:</mat-label>
+      <textarea matInput formControlName="motivo" placeholder="Escriba el motivo"></textarea>
+      <mat-error *ngIf="f['motivo'].touched && f['motivo'].invalid">
+        <mat-error *ngIf="f['motivo'].errors?.['required']">El campo motivo es requerido</mat-error>
+      </mat-error>
+    </mat-form-field>
+    <div class="text-center">
+      <mat-checkbox class="example-margin m-2" 
+      (change)="OnChange($event)"
+      ><strong>Autorizado</strong></mat-checkbox>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions align="center">
+  <button mat-raised-button color="primary" [mat-dialog-close]>Cancelar</button>
+  <button mat-raised-button color="primary" [disabled]="!errorDias || !IsChecked || form.invalid" (click)="submit()">Aceptar</button>
+</div>

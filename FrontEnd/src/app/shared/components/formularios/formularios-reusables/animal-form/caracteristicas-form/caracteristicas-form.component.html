@@ -1,0 +1,118 @@
+<div class="m-2" *ngIf="form" [formGroup]="form">
+    <div class="row">
+        <div class="col-4">
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>Especie</mat-label>
+                <mat-select formControlName="especie">
+                    <mat-option *ngFor="let item of especies" [value]="item.tipoCatalogoId">
+                        {{item.nombre}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="f['especie'].touched && f['especie'].invalid">
+                    <mat-error *ngIf="f['especie'].errors?.['required']">El campo especie es
+                        requerido
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-4">
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>Raza</mat-label>
+                <mat-select formControlName="raza">
+                    <mat-option *ngFor="let item of razas" [value]="item.tipoCatalogoId">
+                        {{item.nombre}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="f['raza'].touched && f['raza'].invalid">
+                    <mat-error *ngIf="f['raza'].errors?.['required']">El campo raza es
+                        requerido
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-4">
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>Sexo</mat-label>
+                <mat-select formControlName="sexo">
+                    <mat-option *ngFor="let item of sexo" [value]="item.tipoCatalogoId">
+                        {{item.nombre}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="f['sexo'].touched && f['sexo'].invalid">
+                    <mat-error *ngIf="f['sexo'].errors?.['required']">El campo sexo es
+                        requerido
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <hr>
+    <mat-form-field style="width: 50%;" appearance="legacy">
+        <mat-label>Estado Reproductivo</mat-label>
+        <mat-select formControlName="estadoReproductivo">
+            <mat-option *ngFor="let item of estadosReproductivos" [value]="item.tipoCatalogoId">
+                {{item.nombre}}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="f['estadoReproductivo'].touched && f['estadoReproductivo'].invalid">
+            <mat-error *ngIf="f['estadoReproductivo'].errors?.['required']">El campo estado reproductivo es
+                requerido
+            </mat-error>
+        </mat-error>
+    </mat-form-field>
+    <hr>
+    <div class="row">
+        <div class="col-6">
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>Color predominante</mat-label>
+                <mat-select formControlName="colorPredominante">
+                    <mat-option *ngFor="let item of colorPredominante" [value]="item.tipoCatalogoId">
+                        {{item.nombre}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="f['colorPredominante'].touched && f['colorPredominante'].invalid">
+                    <mat-error *ngIf="f['colorPredominante'].errors?.['required']">El campo color predominante es
+                        requerido
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-6">
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>Color secundario</mat-label>
+                <mat-select formControlName="colorSecundario">
+                    <mat-option *ngFor="let item of colorSecundario" [value]="item.tipoCatalogoId">
+                        {{item.nombre}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="f['colorSecundario'].touched && f['colorSecundario'].invalid">
+                    <mat-error *ngIf="f['colorSecundario'].errors?.['required']">El campo color secundario es
+                        requerido
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <hr>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Señas particulares del animal</mat-label>
+        <textarea matInput placeholder="" formControlName="señasParticulares"></textarea>
+        <mat-error *ngIf="f['señasParticulares'].touched && f['señasParticulares'].invalid">
+            <mat-error *ngIf="f['señasParticulares'].errors?.['required']">El campo señas particulares es
+                requerido
+            </mat-error>
+        </mat-error>
+    </mat-form-field>
+    
+
+    <p class="text-primary">Identificación Fotográfica</p>
+    <app-multiplos-archivos-form formControlName="identificacionFotografica" [formatos]="formatos" [size]="1000000" [max]="2" (envioArray)="recibirFotografias($event)"></app-multiplos-archivos-form>
+    <p class="text-primary">Identificación Visible</p>
+    <app-multiplos-archivos-form formControlName="identificacionVisible" [formatos]="formatos" [size]="1000000" [max]="1" (envioArray)="recibirVisible($event)"></app-multiplos-archivos-form>
+
+
+    <div class="text-center">
+        <button mat-raised-button class="m-2 botones" matStepperPrevious>Regresar</button>
+        <button mat-raised-button class="botones" matStepperNext (click)="submit()" [disabled]="!form.valid" >Siguiente</button>
+    </div>
+</div>

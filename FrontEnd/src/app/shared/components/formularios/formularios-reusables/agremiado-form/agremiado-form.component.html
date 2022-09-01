@@ -1,0 +1,15 @@
+<div class="m-2" [formGroup]="form">
+    <div class="row">
+        <div class="col-6 py-3">
+            <mat-label class="m-3">Pertenece a algun gremio</mat-label>
+            <mat-radio-group formControlName="agremiado" [ngModel]="'NO'" aria-label="Selecciona una Opción">
+                <mat-radio-button labelPosition="before" color="primary" value="SI">Si</mat-radio-button>
+                <mat-radio-button  labelPosition="before" color="primary" value="NO">No</mat-radio-button>
+            </mat-radio-group>        
+        </div>
+        <div class="col-6">
+            <app-input-simple-form *ngIf="agremiado" formControlName="nombreGremio" [datos]="{titulo: 'Nombre del Gremio'}"></app-input-simple-form>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,39 @@
+<mat-card>
+    <mat-card-title class="text-center p-4">
+        <h1 class="display-5 text-dark"><strong>MUNICIPIO DEL DISTRITO METROPOLITANO DE QUITO</strong></h1>
+        <h1 class="display-6 text-primary"><strong>REGISTRO METROPOLITANO DE FAUNA URBANA (REMETFU)</strong></h1>
+    </mat-card-title>
+    <mat-card-content>
+
+        <div class="row">
+            <div class="col-6 position-relative">
+                <div class="position-absolute top-50 start-50 translate-middle">
+                    <h3>Fauna Urbana</h3>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="column">
+                        <img src="../assets/images/f1.jpg" style="width:100%">
+                        <img src="../assets/images/f2.jpg" style="width:100%">
+                    </div>
+                    <div class="column">
+                        <img src="../assets/images/f3.jpg" style="width:100%">
+                        <img src="../assets/images/f4.jpg" style="width:100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <div class="d-flex bd-highlight">
+            <div class="p-2 w-100 bd-highlight">
+                <a *ngIf="mostrarMenu" href="../assets/static/Manual de usuario.pdf"
+                    target="_blank">
+                    <mat-icon class="icon">my_library_books</mat-icon>
+                    <span class="text-white icontext">Manual de usuario</span>
+                </a></div>
+            <div class="ms-auto flex-shrink-1 bd-highlight"><img src="../assets/images/bienestar.png" class="img-fluid imagen" width="90%" alt=""></div>
+        </div>
+    </mat-card-content>
+</mat-card>

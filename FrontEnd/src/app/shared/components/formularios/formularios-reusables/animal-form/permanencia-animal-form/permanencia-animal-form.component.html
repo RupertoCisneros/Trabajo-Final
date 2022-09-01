@@ -1,0 +1,85 @@
+<div class="m-2" *ngIf="form" [formGroup]="form">
+    <div *ngIf="animalService.tutor">
+        <strong>Domicilio del tutor</strong> 
+        <br>
+        <app-direccion-form  formControlName="direccionTutor"></app-direccion-form>
+    </div>
+    <hr>
+    <div class="col-6">
+        <mat-form-field class="example-full-width" appearance="legacy">
+            <mat-label>Tipo de Vivienda</mat-label>
+            <mat-select formControlName="vivienda">
+                <mat-option *ngFor="let item of viviendas" [value]="item.tipoCatalogoId">
+                    {{item.nombre}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="f['vivienda'].touched && f['vivienda'].invalid">
+                <mat-error *ngIf="f['vivienda'].errors?.['required']">El campo vivienda es
+                    requerido
+                </mat-error>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="legacy">
+            <mat-label>Metros cuadrados del total de la vivienda</mat-label>
+            <input type="number" matInput formControlName="metrosTotal">
+            <mat-error *ngIf="f['metrosTotal'].touched && f['metrosTotal'].invalid">
+                <mat-error *ngIf="f['metrosTotal'].errors?.['required']">El campo Metros cuadrados es
+                    requerido
+                </mat-error>
+                <mat-error *ngIf="f['metrosTotal'].errors?.['min']">El campo no puede ser menor a 1
+                </mat-error>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="legacy">
+            <mat-label>Metros cuadrados aproximado del lugar de permanencia</mat-label>
+            <input type="number" matInput formControlName="metrosAproximado">
+            <mat-error *ngIf="f['metrosAproximado'].touched && f['metrosAproximado'].invalid">
+                <mat-error *ngIf="f['metrosAproximado'].errors?.['required']">El campo Metros cuadrados aproximado es
+                    requerido
+                </mat-error>
+                <mat-error *ngIf="f['metrosAproximado'].errors?.['min']">El campo no puede ser menor a 1
+                </mat-error>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <hr>
+    <mat-label>¿Posee cerramiento?</mat-label>
+    <mat-radio-group class="m-3" formControlName="cerramiento" aria-label="Selecciona una Opción">
+        <mat-radio-button labelPosition="before" color="primary" value="SI">SI</mat-radio-button>
+        <mat-radio-button labelPosition="before" color="primary" value="NO">NO</mat-radio-button>
+    </mat-radio-group>
+
+    <hr>
+    <div class="col-6">
+        <mat-form-field class="example-full-width" appearance="legacy">
+            <mat-label>Estatus de la Vivienda</mat-label>
+            <mat-select formControlName="estatusVivienda">
+                <mat-option *ngFor="let item of estatusViviendas" [value]="item.tipoCatalogoId">
+                    {{item.nombre}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="f['estatusVivienda'].touched && f['estatusVivienda'].invalid">
+                <mat-error *ngIf="f['estatusVivienda'].errors?.['required']">El campo Estatus de la Vivienda es
+                    requerido
+                </mat-error>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="legacy">
+            <mat-label>Permanencia</mat-label>
+            <mat-select formControlName="permanencia">
+                <mat-option *ngFor="let item of permanencias" [value]="item.tipoCatalogoId">
+                    {{item.nombre}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="f['permanencia'].touched && f['permanencia'].invalid">
+                <mat-error *ngIf="f['permanencia'].errors?.['required']">El campo permanencia es
+                    requerido
+                </mat-error>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="text-center">
+        <button mat-raised-button class="m-2 botones" matStepperPrevious>Regresar</button>
+        <button mat-raised-button class="botones" matStepperNext [disabled]="!form.valid">Siguiente</button>
+    </div>
+</div>

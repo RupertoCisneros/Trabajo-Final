@@ -1,0 +1,52 @@
+<div class="p-2">
+  <mat-card class="p-3 mat-elevation-z8">
+    <mat-card-title class="bg-primary text-white text-center">Aprobación de trámites</mat-card-title>
+    <div *ngIf="loading">
+      <br>
+      <mat-spinner style="margin: auto;" [diameter]="20"></mat-spinner>
+    </div>
+    <mat-card-content *ngIf="!loading">
+      <mat-form-field appearance="standard">
+        <mat-label>Buscar</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="buscar..." #input>
+      </mat-form-field>
+      <div class="mat-elevation-z8 p-4 table-responsive">
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef='Numero de tramite'>
+            <th mat-header-cell *matHeaderCellDef> Número de Registro </th>
+            <td mat-cell *matCellDef="let element">
+              {{element.nroRegistro}} </td>
+          </ng-container>
+          <ng-container matColumnDef='Fecha de Creacion'>
+            <th mat-header-cell *matHeaderCellDef> Fecha de Creación </th>
+            <td mat-cell *matCellDef="let element">
+              {{element.fechaAsigna | date:'longDate'}} </td>
+          </ng-container>
+          <ng-container matColumnDef='Estado del tramite'>
+            <th mat-header-cell *matHeaderCellDef> Estado del trámite </th>
+            <td mat-cell *matCellDef="let element">
+              {{element.estadoTramite}} </td>
+          </ng-container>
+          <ng-container matColumnDef='Pertenece'>
+            <th mat-header-cell *matHeaderCellDef> Pertenece a </th>
+            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Acciones">
+            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button matTooltip="Visualizar" class="iconbutton" color="primary" (click)="enviarId(element)">
+                <mat-icon>visibility</mat-icon>
+              </button></td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No se ha encontrado "{{input.value}}"</td>
+          </tr>
+        </table>
+      </div>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+      </mat-paginator>
+    </mat-card-content>
+  </mat-card>
+</div>
